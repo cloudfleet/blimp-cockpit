@@ -1,0 +1,2 @@
+- name: restart postgres
+  service: name=postgresql pattern=/etc/init.d/postgresql state=restarted enabled=yes

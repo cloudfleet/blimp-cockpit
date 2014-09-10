@@ -1,0 +1,13 @@
+---
+- name: install apache
+  apt: pkg=apache2 state=present
+- name: copy site configuration
+  copy: src=apache.conf dest=/etc/apache2/sites-available/blimp.conf
+- name: clean sites-enabled
+  file: path=/etc/apache2/sites-enabled state=absent
+- name: clean sites-enabled
+  file: path=/etc/apache2/sites-enabled state=directory
+- name: link apache conf
+  file: path=/etc/apache2/sites-enabled/blimp.conf src=../sites-available/blimp.conf state=link
+- name: start apache
+  service: name=apache2 pattern=/etc/init.d/apache2 state=restarted enabled=yes

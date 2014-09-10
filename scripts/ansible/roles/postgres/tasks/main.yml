@@ -1,0 +1,33 @@
+---
+- name: install postgres
+  apt: pkg={{ item }}
+  with_items:
+  - postgresql
+  - python-psycopg2
+
+
+- name: restart postgres
+  service: name=postgresql pattern=/etc/init.d/postgresql state=restarted enabled=yes
+
+- name: Ensure database exists
+  sudo: yes
+  sudo_user: postgres
+  postgresql_db: name=blimp_oc
+
+- name: Ensure DB user has access to the DB
+  sudo: yes
+  sudo_user: postgres
+  postgresql_user: name={{ dbuser }} state=present
+
+
+- name: Set db owner
+  sudo: yes
+  sudo_user: postgres
+  command: psql -c "ALTER DATABASE blimp_oc OWNER TO blimp;"
+
+
+- name: Set user password
+  sudo: yes
+  sudo_user: postgres
+  command: psql -c "ALTER USER blimp with  password 'blimppw';"
+
