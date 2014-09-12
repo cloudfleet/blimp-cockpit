@@ -1,5 +1,15 @@
 ---
 - name: install nginx
   apt: pkg=nginx state=present
+
+- name: remove default nginx server
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: add cockpit nginx config file
+  copy: src=cockpit dest=/etc/nginx/sites-available/cockpit
+
+- name: link cockpit nginx config file
+  file: src=/etc/nginx/sites-available/cloudfleet dest=/etc/nginx/sites-enabled/cockpit state=link
+
 - name: start nginx
   service: name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
