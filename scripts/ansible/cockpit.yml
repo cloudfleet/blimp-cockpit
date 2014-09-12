@@ -2,8 +2,4 @@
   sudo: yes
 
   roles:
-    - pagekite
-    - apache
-    - postgres
-    - owncloud
-    - cockpit
+    - nginx
