@@ -2,10 +2,8 @@
 #
 # VERSION 0.3
 
-FROM ubuntu:14.04
+FROM nginx
 
-copy . /opt/cloudfleet/cockpit
+COPY . /opt/cloudfleet/cockpit
 WORKDIR /opt/cloudfleet/cockpit
 RUN scripts/install.sh
-
-CMD scripts/start.sh
