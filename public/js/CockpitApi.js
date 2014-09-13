@@ -19,8 +19,8 @@
 				$log.debug( "constructor() ");
 
 
-				var usersCollection     = $resource("/api/v1/users/"),
-					usersResource       = $resource("/api/v1/users/:id", {id: '@id'}),
+				var usersCollection     = $resource("/musterroll/api/v1/users/"),
+					usersResource       = $resource("/musterroll/api/v1/users/:id", {id: '@id'}),
 
 					/**
 					 * Util function to build a resolved promise
@@ -44,7 +44,7 @@
 
 					getCurrentUser = function()
 					{
-						return $http.get("/api/v1/currentUser")
+						return $http.get("/musterroll/api/v1/currentUser")
 								.then(
 								function (data)
 								{
@@ -74,7 +74,7 @@
 						return $http(
 							{
 								method: 'POST',
-								url: '/login',
+								url: '/musterroll/login',
 								data: $.param({
 									'username': username,
 									'password': password
