@@ -4,6 +4,4 @@
 
 FROM nginx
 
-COPY . /opt/cloudfleet/cockpit
-WORKDIR /opt/cloudfleet/cockpit
-RUN scripts/install.sh
+COPY public /usr/share/nginx/html
