@@ -10,10 +10,11 @@
 			'utils/logger/ExternalLogger',
 			'auth/LoginController',
 			'dashboard/DashboardController',
+            'admin/UsersController',
 			'cockpit'
 
 		],
-		function ( $log, DashboardController, LoginController )
+		function ( $log, DashboardController, LoginController, UsersController )
 		{
 
 			var RouteManager = function ( $stateProvider, $urlRouterProvider )
@@ -32,7 +33,13 @@
 						url: "/dashboard",
 						templateUrl : "views/dashboard.tpl.html",
 						controller  : "DashboardController"
-					});
+					})
+                    .state('User Management', {
+                        url: "users",
+                        templateUrl : "views/users.tpl.html",
+                        controller  : "UsersController"
+                    })
+                    ;
 
 			};
 
