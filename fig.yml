@@ -1,0 +1,12 @@
+cockpit:
+  image: nginx
+  volumes:
+   - nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
+   - public/:/usr/share/nginx/html
+  links:
+   - musterroll
+  ports:
+   - "8080:80"
+musterroll:
+  image: cloudfleet/blimp-musterroll
+
