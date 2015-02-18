@@ -1,0 +1,22 @@
+<!-- navbar -->
+<div data-ng-include=" 'tpl/blocks/header.html' " class="app-header navbar">
+</div>
+<!-- / navbar -->
+
+<!-- menu -->
+<div data-ng-include=" 'tpl/blocks/aside.html' " class="app-aside hidden-xs bg-black">
+</div>
+<!-- / menu -->
+
+<!-- view -->
+<div class="app-content">
+    <div ui-butterbar></div>
+    <a href class="off-screen-toggle hide" ui-toggle-class="off-screen" data-target=".app-aside"></a>
+    <div class="app-content-body app-content-full fade-in" ui-view>
+    </div>
+</div>
+<!-- / view -->
+<!-- footer -->
+<div data-ng-include=" 'tpl/blocks/app.footer.html' "></div>
+<!-- / footer -->
+
