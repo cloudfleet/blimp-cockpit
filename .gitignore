@@ -18,3 +18,7 @@ node_modules
 .vagrant
 .bowerrc
 public/duralumin
+dist
+.tmp
+.sass-cache
+bower_components
