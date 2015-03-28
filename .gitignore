@@ -20,7 +20,7 @@ node_modules
 public/duralumin
 
 # ignore the generator-angular files in root
-/bower_components
-/.tmp
-/.sass-cache
-/dist
+dist
+.tmp
+.sass-cache
+bower_components
