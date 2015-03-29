@@ -20,42 +20,34 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">blimpCockpit</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <!-- navbar -->
+    <div data-ng-include=" 'views/blocks/header.html' " class="app-header navbar">
     </div>
+    <!-- / navbar -->
 
-    <div class="container">
-    <div ng-view=""></div>
+    <!-- menu -->
+    <div data-ng-include=" 'views/blocks/aside.html' " class="app-aside bg-black">
+      <!-- hidden-xs -->
     </div>
+    <!-- / menu -->
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+    <!-- content -->
+    <div class="app-content">
+      <div ui-butterbar></div>
+      <a href class="off-screen-toggle hide" ui-toggle-class="off-screen"
+         data-target=".app-aside" ></a>
+      <div class="app-content-body fade-in" ui-view></div>
+      <!-- <div class="container"> -->
+      <div ng-view=""></div>
+      <!-- </div> -->
     </div>
+    <!-- /content -->
+
+    <!-- footer -->
+    <div data-ng-include=" 'views/blocks/footer.html' " class="footer">>
+    </div>
+    <!-- / footer -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
