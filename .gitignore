@@ -18,3 +18,9 @@ node_modules
 .vagrant
 .bowerrc
 public/duralumin
+
+# ignore the generator-angular files in root
+/bower_components
+/.tmp
+/.sass-cache
+/dist

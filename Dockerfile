@@ -4,4 +4,9 @@
 
 FROM nginx
 
-COPY public /usr/share/nginx/html
+# old
+#COPY public /usr/share/nginx/html
+
+RUN mkdir -p /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+ADD ./public/ /usr/share/nginx/html/
