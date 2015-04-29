@@ -8,27 +8,20 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('blimpCockpitApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        //templateUrl: 'views/main.html',
-        templateUrl: 'views/dashboard.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    'ngTouch',
+    'ngStorage',
+    'ui.router',
+    'ui.bootstrap',
+    'ui.utils',
+    'ui.load',
+    'ui.jq',
+    'oc.lazyLoad',
+    'pascalprecht.translate'
+
+  ]);
