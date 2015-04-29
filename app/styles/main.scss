@@ -1,3 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,300italic,400italic,500italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic&subset=latin,latin-ext,cyrillic);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=cyrillic,cyrillic-ext,latin,greek-ext,greek,latin-ext);
+
+
+.fa-size-md {
+  font-size: 25px;
+}
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
@@ -90,4 +99,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 //   }
 // }
 
+@import "../bower_components/bootstrap/dist/css/bootstrap.css";
+@import "../bower_components/animate.css/animate.css";
+@import "../bower_components/font-awesome/css/font-awesome.min.css";
+@import "../bower_components/simple-line-icons/css/simple-line-icons.css";
 @import "./app.scss";

@@ -18,7 +18,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    dist: 'dist',
+    raw: '.raw'
   };
 
   // Define the configuration for all the tasks
@@ -376,7 +377,8 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'scripts/l10n/{,*/}*.*'
           ]
         }, {
           expand: true,
@@ -388,6 +390,37 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'bower_components/**',
+          dest: '<%= yeoman.dist %>'
+        }]
+      },
+      /* copy in original scripts to .raw/
+      so that lazy loading can use them */
+      raw1: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.raw %>',
+          src: [
+            'scripts/{,*/}*.*'
+          ]
+        }]
+      },
+      /* copy in original scripts from .raw/
+       to dist/, so that lazy loading can use them */
+      raw2: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.raw %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'scripts/{,*/}*.*'
+          ]
         }]
       },
       styles: {
@@ -454,6 +487,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'copy:raw1', // for lazy loading
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -466,7 +500,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:raw2' // for lazy loading
   ]);
 
   grunt.registerTask('default', [
