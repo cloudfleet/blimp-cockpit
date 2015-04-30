@@ -1,7 +1,9 @@
 cockpit:
   build: .
   volumes:
-    - ./public/:/usr/share/nginx/html/
+    - ./app/:/usr/share/nginx/html/
+    # - ./dist/:/usr/share/nginx/html/
+    - ./.tmp/styles/:/usr/share/nginx/html/styles/
     - ./nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
   ports:
     - "8080:80"

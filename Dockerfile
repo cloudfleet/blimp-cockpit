@@ -9,4 +9,5 @@ FROM nginx
 
 RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
-ADD ./public/ /usr/share/nginx/html/
+ADD ./app/ /usr/share/nginx/html/
+# ADD ./dist/ /usr/share/nginx/html/
