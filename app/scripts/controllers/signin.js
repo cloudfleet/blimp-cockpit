@@ -8,22 +8,23 @@
  * Controller of the SigninFormController
  */
 angular.module('blimpCockpitApp')
-  .controller('SigninFormController', ['$scope', '$http', '$state', function($scope, $http, $state) {
+  .controller('SigninFormController',
+  ['$scope', '$http', '$state', 'cockpitApi', '$cookies',
+    function($scope, $http, $state, cockpitApi, $cookies) {
     $scope.user = {};
     $scope.authError = null;
     $scope.login = function() {
       $scope.authError = null;
       // Try to login
-      $http.post('api/login', {username: $scope.user.username, password: $scope.user.password})
-      .then(function(response) {
-        if ( !response.data.user ) {
-          $scope.authError = 'Email or Password not right';
-        }else{
+
+      cockpitApi.login($scope.user.username, $scope.user.password).then(
+
+        function(res){
+          $scope.$emit('LOGED_IN');
           $state.go('app.cockpit');
+        },function(res){
+
         }
-      }, function(x) {
-        $scope.authError = 'Server Error';
-      });
+      );
     };
-  }])
-;
+  }]);

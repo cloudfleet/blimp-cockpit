@@ -10,6 +10,8 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-chosen/bootstrap-chosen-variables.scss";
+@import "bootstrap-chosen/bootstrap-chosen.scss";
 // endbower
 
 // .browsehappy {

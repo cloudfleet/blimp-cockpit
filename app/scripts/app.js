@@ -21,7 +21,6 @@ var app = angular
     'ui.utils',
     'ui.load',
     'ui.jq',
-    'oc.lazyLoad',
-    'pascalprecht.translate'
-
+    'pascalprecht.translate',
+    'ui.calendar'
   ]);

@@ -82,7 +82,7 @@
                 <img src="images/a6.jpg" alt="...">
                 <i class="on md b-white bottom"></i>
               </span>
-        <span class="hidden-sm hidden-md">kermit le Frog</span> <b class="caret"></b>
+        <span class="hidden-sm hidden-md">{{currentUser}}</span> <b class="caret"></b>
       </a>
       <!-- dropdown -->
       <ul class="dropdown-menu animated fadeInRight w">
@@ -105,7 +105,7 @@
         </li>
         <li class="divider"></li>
         <li>
-          <a ui-sref="access.signin">Logout</a>
+          <a ng-click="logOut()">Logout</a>
         </li>
       </ul>
       <!-- / dropdown -->
