@@ -71,10 +71,10 @@ angular
         $scope.isLogedIn = $interval(function () {
           $scope.checkSession()
         }, 20000, 0);
-
       };
-
+      $scope.initLoginSession();
       $scope.checkSession = function () {
+
         cockpitApi.getCurrentUser().then(function (res) {
 
           if (res == 401) {
