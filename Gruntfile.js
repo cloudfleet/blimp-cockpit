@@ -19,7 +19,9 @@ module.exports = function (grunt) {
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist',
-    raw: '.raw'
+    raw: '.raw',
+    repo: 'git@github.com:cloudfleet/blimp-cockpit.git',
+    repo_branch: 'production'
   };
 
   // Define the configuration for all the tasks
@@ -374,6 +376,7 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
+            'Dockerfile', // the production Dockerfile
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
@@ -452,9 +455,25 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
-  });
+    },
 
+    // Deploy to production branch
+    buildcontrol: {
+      options: {
+        dir: '<%= yeoman.dist %>',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      production: {
+        options: {
+          remote: '<%= yeoman.repo %>',
+          branch: '<%= yeoman.repo_branch %>'
+        }
+      }
+    }
+
+  });
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
@@ -502,6 +521,11 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin',
     'copy:raw2' // for lazy loading
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'buildcontrol:production'
   ]);
 
   grunt.registerTask('default', [
