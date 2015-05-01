@@ -11,16 +11,22 @@ angular.module('blimpCockpitApp')
     function ($state, $rootScope, cockpitApi, $interval) {
 
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+
+
         var requireLogin = toState.data.requireLogin;
         cockpitApi.getCurrentUser().then(function (res) {
+         
           if (requireLogin && res.id == undefined && !$state.includes('access.forgotpwd')) {
             $state.go('access.signin');
           }
+
+          if(($state.includes('access.forgotpwd') || $state.includes('access.signin')) && res.id!=undefined){
+
+            $state.go('app.cockpit');
+          }
         }, function () {
           console.log('error')
-
         });
-
 
       });
 
