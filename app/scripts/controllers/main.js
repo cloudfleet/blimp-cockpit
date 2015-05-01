@@ -89,7 +89,6 @@ angular
           } else {
             if ($state.includes('access.signin') || $state.includes('access.forgotpwd')) {
               $state.go('app.cockpit');
-
             }
           }
         }, function () {
