@@ -9,8 +9,8 @@
  */
 angular
   .module('blimpCockpitApp')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window',
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', '$state', '$interval',
+    function(              $scope,   $translate,   $localStorage,   $window , cockpitApi, $state, $interval) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -47,7 +47,6 @@ angular
       } else {
         $localStorage.settings = $scope.app.settings;
       }
-
       // angular translate
       $scope.lang = { isopen: false };
       $scope.langs = {en:'English', de_DE:'German'};
@@ -60,6 +59,7 @@ angular
         $scope.lang.isopen = !$scope.lang.isopen;
       };
 
+
       function isSmartDevice( $window )
       {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -68,4 +68,44 @@ angular
         return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
 
+      $scope.initLoginSession = function(){
+        $scope.isLogedIn = $interval(function(){$scope.checkSession()}, 20000, 0);
+
+      };
+
+      $scope.checkSession = function() {
+        cockpitApi.getCurrentUser().then(function (res) {
+
+          if(res == 401){
+            if (angular.isDefined($scope.isLogedIn)) {
+              console.log('res '+res)
+
+              $interval.cancel($scope.isLogedIn);
+              $scope.isLogedIn = undefined;
+              $state.go('access.signin');
+
+            }
+
+          } else {
+            if($state.includes('access.signin') || $state.includes('access.forgotpwd')){
+              $state.go('app.cockpit');
+
+            }
+          }
+        }, function () {
+
+        });
+
+      }
+
+      $scope.$on('LOGED_IN', function(event, data) { $scope.initLoginSession(); });
+
+      $scope.logOut = function() {
+        cockpitApi.logOut().then(function(res){
+          console.log(res);
+
+        }, function(){
+
+        })
+      }
     }]);

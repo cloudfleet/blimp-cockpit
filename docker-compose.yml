@@ -3,6 +3,7 @@ cockpit:
   volumes:
     - ./app/:/usr/share/nginx/html/
     # - ./dist/:/usr/share/nginx/html/
+    - ./bower_components/:/usr/share/nginx/html/bower_components/
     - ./.tmp/styles/:/usr/share/nginx/html/styles/
     - ./nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
   ports:
@@ -11,4 +12,5 @@ cockpit:
     - musterroll
 musterroll:
   image: cloudfleet/blimp-musterroll
+  command: node server.js --testing=true
 

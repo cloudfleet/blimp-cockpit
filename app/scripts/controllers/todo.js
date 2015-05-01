@@ -46,8 +46,7 @@ angular.module('blimpCockpitApp')
     $scope.location = $location;
 
     $scope.$watch('location.path()', function (path) {
-        console.log(path);
-        $scope.statusFilter = {'/app/todo/active': {completed: false}, '/app/todo/completed': {completed: true}}[path];
+      $scope.statusFilter = {'/app/todo/active': {completed: false}, '/app/todo/completed': {completed: true}}[path];
     });
 
     $scope.$watch('remainingCount == 0', function (val) {
