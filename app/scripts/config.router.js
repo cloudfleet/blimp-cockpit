@@ -15,7 +15,7 @@ angular.module('blimpCockpitApp')
 
         var requireLogin = toState.data.requireLogin;
         cockpitApi.getCurrentUser().then(function (res) {
-         
+
           if (requireLogin && res.id == undefined && !$state.includes('access.forgotpwd')) {
             $state.go('access.signin');
           }
