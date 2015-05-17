@@ -20,7 +20,7 @@ angular.module('blimpCockpitApp')
       cockpitApi.login($scope.user.username, $scope.user.password).then(
 
         function(res){
-          $scope.$emit('LOGED_IN');
+          //$scope.$emit('LOGED_IN');
           $state.go('app.cockpit');
         },function(res){
 
