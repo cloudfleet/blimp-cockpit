@@ -23,7 +23,7 @@ angular.module('blimpCockpitApp')
             'password': password
           }).
             success(function (data) {
-              current_user = data;
+              service.current_user = data;
               $rootScope.currentUser = data.id;
               deferred.resolve(data);
 
@@ -40,6 +40,7 @@ angular.module('blimpCockpitApp')
           $http.get('/musterroll/logout').
             success(function (data, status, header) {
               $rootScope.currentUser = null;
+              service.current_user = null;
               deferred.resolve(data);
 
             }).
@@ -54,7 +55,7 @@ angular.module('blimpCockpitApp')
           var deferred = $q.defer();
           if(current_user && current_user.id)
           {
-            deferred.resolve(current_user);
+            deferred.resolve(service.current_user);
           }
           else
           {
@@ -62,6 +63,7 @@ angular.module('blimpCockpitApp')
             $http.get('/musterroll/api/v1/currentUser').
               success(function (data, status, header) {
                 $rootScope.currentUser = data.id;
+                service.current_user = data;
                 deferred.resolve(data);
               }).
               error(function (data, status) {
