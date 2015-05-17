@@ -11,7 +11,9 @@ angular.module('blimpCockpitApp')
   .factory('cockpitApi', ['$resource', '$http', '$q', '$rootScope', '$state',
     function ($resource, $http, $q, $rootScope, $state) {
 
-      return {
+      var service = {
+
+        current_user: null,
 
         login: function (username, password) {
           var deferred = $q.defer();
@@ -21,6 +23,8 @@ angular.module('blimpCockpitApp')
             'password': password
           }).
             success(function (data) {
+              current_user = data;
+              $rootScope.currentUser = data.id;
               deferred.resolve(data);
 
             }).
@@ -48,21 +52,28 @@ angular.module('blimpCockpitApp')
         },
         getCurrentUser: function () {
           var deferred = $q.defer();
-          $http.get('/musterroll/api/v1/currentUser').
-            success(function (data, status, header) {
-              $rootScope.currentUser = data.id;
-              deferred.resolve(data);
-            }).
-            error(function (data, status) {
-              deferred.resolve(status);
-            });
-
+          if(current_user && current_user.id)
+          {
+            deferred.resolve(current_user);
+          }
+          else
+          {
+            deferred.resolve(status)
+            $http.get('/musterroll/api/v1/currentUser').
+              success(function (data, status, header) {
+                $rootScope.currentUser = data.id;
+                deferred.resolve(data);
+              }).
+              error(function (data, status) {
+                deferred.resolve(status);
+              });
+          }
           return deferred.promise;
         }
 
 
 
-      }
+      };
+      return service;
 
     }]);
-
