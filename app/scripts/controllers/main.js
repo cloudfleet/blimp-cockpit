@@ -67,39 +67,39 @@ angular
         return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
 
-      $scope.initLoginSession = function () {
-        $scope.isLogedIn = $interval(function () {
-          $scope.checkSession()
-        }, 20000, 0);
-      };
-      $scope.initLoginSession();
-      $scope.checkSession = function () {
+      // $scope.initLoginSession = function () {
+      //   $scope.isLogedIn = $interval(function () {
+      //     $scope.checkSession()
+      //   }, 20000, 0);
+      // };
+      // $scope.initLoginSession();
+      // $scope.checkSession = function () {
 
-        cockpitApi.getCurrentUser().then(function (res) {
+      //   cockpitApi.getCurrentUser().then(function (res) {
 
-          if (res == 401) {
-            if (angular.isDefined($scope.isLogedIn)) {
+      //     if (res == 401) {
+      //       if (angular.isDefined($scope.isLogedIn)) {
 
-              $interval.cancel($scope.isLogedIn);
-              $scope.isLogedIn = undefined;
-              $state.go('access.signin');
+      //         $interval.cancel($scope.isLogedIn);
+      //         $scope.isLogedIn = undefined;
+      //         $state.go('access.signin');
 
-            }
+      //       }
 
-          } else {
-            if ($state.includes('access.signin') || $state.includes('access.forgotpwd')) {
-              $state.go('app.cockpit');
-            }
-          }
-        }, function () {
+      //     } else {
+      //       if ($state.includes('access.signin') || $state.includes('access.forgotpwd')) {
+      //         $state.go('app.cockpit');
+      //       }
+      //     }
+      //   }, function () {
 
-        });
+      //   });
 
-      };
+      // };
 
-      $scope.$on('LOGED_IN', function (event, data) {
-        $scope.initLoginSession();
-      });
+      // $scope.$on('LOGED_IN', function (event, data) {
+      //   $scope.initLoginSession();
+      // });
 
       $scope.logOut = function () {
         cockpitApi.logOut().then(function (res) {
@@ -107,6 +107,6 @@ angular
 
         }, function () {
 
-        })
-      }
+        });
+      };
     }]);
