@@ -53,7 +53,7 @@ angular.module('blimpCockpitApp')
         },
         getCurrentUser: function () {
           var deferred = $q.defer();
-          if(current_user && current_user.id)
+          if(service.current_user && service.current_user.id)
           {
             deferred.resolve(service.current_user);
           }
