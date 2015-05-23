@@ -16,6 +16,11 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
+      $scope.getCurrentUser = function()
+      {
+        return cockpitApi.getCurrentUser();
+      }
+
       // config
       $scope.app = {
         name: 'cloud fleet',
@@ -67,39 +72,6 @@ angular
         return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
 
-      // $scope.initLoginSession = function () {
-      //   $scope.isLogedIn = $interval(function () {
-      //     $scope.checkSession()
-      //   }, 20000, 0);
-      // };
-      // $scope.initLoginSession();
-      // $scope.checkSession = function () {
-
-      //   cockpitApi.getCurrentUser().then(function (res) {
-
-      //     if (res == 401) {
-      //       if (angular.isDefined($scope.isLogedIn)) {
-
-      //         $interval.cancel($scope.isLogedIn);
-      //         $scope.isLogedIn = undefined;
-      //         $state.go('access.signin');
-
-      //       }
-
-      //     } else {
-      //       if ($state.includes('access.signin') || $state.includes('access.forgotpwd')) {
-      //         $state.go('app.cockpit');
-      //       }
-      //     }
-      //   }, function () {
-
-      //   });
-
-      // };
-
-      // $scope.$on('LOGED_IN', function (event, data) {
-      //   $scope.initLoginSession();
-      // });
 
       $scope.logOut = function () {
         cockpitApi.logOut().then(function (res) {

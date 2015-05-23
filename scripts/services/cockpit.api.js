@@ -8,12 +8,27 @@
  * Service in the blimpCockpitApp.
  */
 angular.module('blimpCockpitApp')
-  .factory('cockpitApi', ['$resource', '$http', '$q', '$rootScope', '$state',
-    function ($resource, $http, $q, $rootScope, $state) {
+  .factory('cockpitApi', ['$resource', '$http', '$q', '$rootScope', '$state', '$localstorage',
+    function ($resource, $http, $q, $rootScope, $state, $localstorage) {
+
+      var localStorageUserKey = "cloudfleet.cockpit.currentUser";
+
+      var storeCurrentUser = function(user)
+      {
+        $localstorage.setObject(localStorageUserKey, user);
+      };
+
+      var  clearCurrentUser = function()
+      {
+        $localstorage.getObject(localStorageUserKey, null);
+      };
 
       var service = {
 
-        current_user: null,
+        getCurrentUser: function()
+        {
+          return $localstorage.setObject(localStorageUserKey);
+        },
 
         login: function (username, password) {
           var deferred = $q.defer();
@@ -23,8 +38,7 @@ angular.module('blimpCockpitApp')
             'password': password
           }).
             success(function (data) {
-              service.current_user = data;
-              $rootScope.currentUser = data.id;
+              storeCurrentUser(data);
               deferred.resolve(data);
 
             }).
@@ -39,8 +53,7 @@ angular.module('blimpCockpitApp')
           var deferred = $q.defer();
           $http.get('/musterroll/logout').
             success(function (data, status, header) {
-              $rootScope.currentUser = null;
-              service.current_user = null;
+              clearCurrentUser();
               deferred.resolve(data);
 
             }).
@@ -51,19 +64,22 @@ angular.module('blimpCockpitApp')
 
           return deferred.promise;
         },
-        getCurrentUser: function () {
+
+        loadCurrentUser: function () {
           var deferred = $q.defer();
-          if(service.current_user && service.current_user.id)
+
+          var storedUser = $localstorage.setObject(localStorageUserKey);
+
+          if(storedUser && storedUser.id)
           {
-            deferred.resolve(service.current_user);
+            deferred.resolve(storedUser);
           }
           else
           {
             deferred.resolve(status)
             $http.get('/musterroll/api/v1/currentUser').
               success(function (data, status, header) {
-                $rootScope.currentUser = data.id;
-                service.current_user = data;
+                $storeCurrentUser(data);
                 deferred.resolve(data);
               }).
               error(function (data, status) {
