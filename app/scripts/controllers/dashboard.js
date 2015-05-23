@@ -12,5 +12,4 @@ angular.module('blimpCockpitApp')
   ['$scope', 'cockpitApi', '$cookies',
     function ($scope, cockpitApi) {
 
-
     }]);

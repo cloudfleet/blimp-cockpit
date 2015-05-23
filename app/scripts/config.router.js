@@ -9,19 +9,18 @@
 angular.module('blimpCockpitApp')
   .run(['$state', '$rootScope', 'cockpitApi', '$interval',
     function ($state, $rootScope, cockpitApi, $interval) {
-      cockpitApi.getCurrentUser();
       $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
 
         if(toState.data.requireLogin)
         {
-          if(!(cockpitApi.current_user))
+          if(!(cockpitApi.getCurrentUser()))
           {
             $state.go('access.signin');
           }
         }
         else
         {
-          if(($state.includes('access.forgotpwd') || $state.includes('access.signin')) && cockpitApi.current_user)
+          if(($state.includes('access.forgotpwd') || $state.includes('access.signin')) && cockpitApi.getCurrentUser())
           {
             $state.go('app.cockpit');
           }
