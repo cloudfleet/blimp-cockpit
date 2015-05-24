@@ -15,13 +15,15 @@ angular.module('blimpCockpitApp')
         {
           if(!(cockpitApi.getCurrentUser()))
           {
+            event.preventDefault();
             $state.go('access.signin');
           }
         }
         else
         {
-          if(($state.includes('access.forgotpwd') || $state.includes('access.signin')) && cockpitApi.getCurrentUser())
+          if((toState.name === 'access.forgotpwd' || toState.name === 'access.signin') && cockpitApi.getCurrentUser())
           {
+            event.preventDefault();
             $state.go('app.cockpit');
           }
 
