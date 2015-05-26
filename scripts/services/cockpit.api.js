@@ -27,7 +27,7 @@ angular.module('blimpCockpitApp')
 
         getCurrentUser: function()
         {
-          return $localstorage.setObject(localStorageUserKey);
+          return $localstorage.getObject(localStorageUserKey);
         },
 
         login: function (username, password) {
@@ -38,9 +38,17 @@ angular.module('blimpCockpitApp')
             'password': password
           }).
             success(function (data) {
-              storeCurrentUser(data);
-              deferred.resolve(data);
 
+              $http.get('/musterroll/api/v1/currentUser').
+                success(function(data, status){
+                  storeCurrentUser(data);
+                  deferred.resolve(data);
+                  $state.go('app.cockpit');
+                }).
+                error(function (data) {
+                  deferred.resolve(false);
+
+                });
             }).
             error(function (data) {
               deferred.resolve(false);
@@ -68,7 +76,7 @@ angular.module('blimpCockpitApp')
         loadCurrentUser: function () {
           var deferred = $q.defer();
 
-          var storedUser = $localstorage.setObject(localStorageUserKey);
+          var storedUser = $localstorage.getObject(localStorageUserKey);
 
           if(storedUser && storedUser.id)
           {
@@ -79,7 +87,7 @@ angular.module('blimpCockpitApp')
             deferred.resolve(status)
             $http.get('/musterroll/api/v1/currentUser').
               success(function (data, status, header) {
-                $storeCurrentUser(data);
+                storeCurrentUser(data);
                 deferred.resolve(data);
               }).
               error(function (data, status) {
