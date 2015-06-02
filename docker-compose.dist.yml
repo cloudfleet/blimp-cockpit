@@ -1,9 +1,7 @@
 cockpit:
   image: nginx
   volumes:
-    - ./app/:/usr/share/nginx/html/
-    - ./bower_components/:/usr/share/nginx/html/bower_components/
-    - ./.tmp/styles/:/usr/share/nginx/html/styles/
+    - ./dist/:/usr/share/nginx/html/
     - ./nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
   ports:
     - "8080:80"
