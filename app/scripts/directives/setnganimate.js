@@ -12,7 +12,7 @@ angular.module('blimpCockpitApp')
     link: function ($scope, $element, $attrs) {
       $scope.$watch(function () {
         return $scope.$eval($attrs.setNgAnimate, $scope);
-      }, function (valnew, valold) {
+      }, function (valnew) {
         $animate.enabled(!!valnew, $element);
       });
     }

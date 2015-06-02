@@ -21,10 +21,12 @@ angular.module('blimpCockpitApp')
   factory.get = function (id) {
     return mails.then(function(mails){
       for (var i = 0; i < mails.length; i++) {
-        if (mails[i].id == id) return mails[i];
+        if (mails[i].id === id) {
+          return mails[i];
+        }
       }
       return null;
-    })
+    });
   };
   return factory;
 }]);

@@ -9,8 +9,16 @@
  */
 angular
   .module('blimpCockpitApp')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', '$state', '$interval',
-    function ($scope, $translate, $localStorage, $window, cockpitApi, $state, $interval) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi',
+    function ($scope, $translate, $localStorage, $window, cockpitApi) {
+
+      function isSmartDevice($window) {
+        // Adapted from http://www.detectmobilebrowsers.com
+        var ua = $window.navigator.userAgent || $window.navigator.vendor || $window.opera;
+        // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
+        return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
+      }
+
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -19,7 +27,7 @@ angular
       $scope.getCurrentUser = function()
       {
         return cockpitApi.getCurrentUser();
-      }
+      };
 
       // config
       $scope.app = {
@@ -55,8 +63,8 @@ angular
       // angular translate
       $scope.lang = {isopen: false};
       $scope.langs = {en: 'English', de_DE: 'German'};
-      $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || "English";
-      $scope.setLang = function (langKey, $event) {
+      $scope.selectLang = $scope.langs[$translate.proposedLanguage()] || 'English';
+      $scope.setLang = function (langKey) {
         // set the current lang
         $scope.selectLang = $scope.langs[langKey];
         // You can change the language during runtime
@@ -65,12 +73,6 @@ angular
       };
 
 
-      function isSmartDevice($window) {
-        // Adapted from http://www.detectmobilebrowsers.com
-        var ua = $window['navigator']['userAgent'] || $window['navigator']['vendor'] || $window['opera'];
-        // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
-        return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
-      }
 
 
       $scope.logOut = function () {

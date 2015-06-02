@@ -33,7 +33,7 @@ angular.module('blimpCockpitApp')
       }
     );
     $scope.newLabel.name = '';
-  }
+  };
 
   $scope.labelClass = function(label) {
     return {
@@ -45,25 +45,25 @@ angular.module('blimpCockpitApp')
 
 }]);
 
-app.controller('MailListCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
+angular.module('blimpCockpitApp').controller('MailListCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
   $scope.fold = $stateParams.fold;
   mails.all().then(function(mails){
     $scope.mails = mails;
   });
 }]);
 
-app.controller('MailDetailCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
+angular.module('blimpCockpitApp').controller('MailDetailCtrl', ['$scope', 'mails', '$stateParams', function($scope, mails, $stateParams) {
   mails.get($stateParams.mailId).then(function(mail){
     $scope.mail = mail;
-  })
+  });
 }]);
 
-app.controller('MailNewCtrl', ['$scope', function($scope) {
+angular.module('blimpCockpitApp').controller('MailNewCtrl', ['$scope', function($scope) {
   $scope.mail = {
     to: '',
     subject: '',
     content: ''
-  }
+  };
   $scope.tolist = [
     {name: 'James', email:'james@gmail.com'},
     {name: 'Luoris Kiso', email:'luoris.kiso@hotmail.com'},
@@ -74,5 +74,5 @@ app.controller('MailNewCtrl', ['$scope', function($scope) {
 angular.module('blimpCockpitApp').directive('labelColor', function(){
   return function(scope, $el, attrs){
     $el.css({'color': attrs.color});
-  }
+  };
 });

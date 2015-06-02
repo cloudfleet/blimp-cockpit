@@ -26,7 +26,7 @@ angular.module('blimpCockpitApp')
     };
     $scope.notes.push(note);
     $scope.selectNote(note);
-  }
+  };
 
   $scope.deleteNote = function(note){
     $scope.notes.splice($scope.notes.indexOf(note), 1);
@@ -34,7 +34,7 @@ angular.module('blimpCockpitApp')
       $scope.note = $scope.notes[0];
       $scope.notes.length && ($scope.notes[0].selected = true);
     }
-  }
+  };
 
   $scope.selectNote = function(note){
     angular.forEach($scope.notes, function(note) {
@@ -42,6 +42,6 @@ angular.module('blimpCockpitApp')
     });
     $scope.note = note;
     $scope.note.selected = true;
-  }
+  };
 
 }]);

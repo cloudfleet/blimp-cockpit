@@ -8,7 +8,7 @@
  *
  * Main module of the application.
  */
-var app = angular
+angular
   .module('blimpCockpitApp', [
     'ngAnimate',
     'ngCookies',

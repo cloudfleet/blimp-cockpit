@@ -11,7 +11,7 @@ angular.module('blimpCockpitApp')
   .factory('cockpitApi', ['$resource', '$http', '$q', '$rootScope', '$state', '$localstorage',
     function ($resource, $http, $q, $rootScope, $state, $localstorage) {
 
-      var localStorageUserKey = "cloudfleet.cockpit.currentUser";
+      var localStorageUserKey = 'cloudfleet.cockpit.currentUser';
 
       var storeCurrentUser = function(user)
       {
@@ -37,20 +37,20 @@ angular.module('blimpCockpitApp')
             'username': username,
             'password': password
           }).
-            success(function (data) {
+            success(function () {
 
               $http.get('/musterroll/api/v1/currentUser').
-                success(function(data, status){
+                success(function(data){
                   storeCurrentUser(data);
                   deferred.resolve(data);
                   $state.go('app.cockpit');
                 }).
-                error(function (data) {
+                error(function () {
                   deferred.resolve(false);
 
                 });
             }).
-            error(function (data) {
+            error(function () {
               deferred.resolve(false);
 
             });
@@ -60,12 +60,12 @@ angular.module('blimpCockpitApp')
         logOut: function(){
           var deferred = $q.defer();
           $http.get('/musterroll/logout').
-            success(function (data, status, header) {
+            success(function (data) {
               clearCurrentUser();
               deferred.resolve(data);
 
             }).
-            error(function (data, status) {
+            error(function (_, status) {
 
               deferred.resolve(status);
             });
@@ -84,13 +84,13 @@ angular.module('blimpCockpitApp')
           }
           else
           {
-            deferred.resolve(status)
+            deferred.resolve(status);
             $http.get('/musterroll/api/v1/currentUser').
-              success(function (data, status, header) {
+              success(function (data) {
                 storeCurrentUser(data);
                 deferred.resolve(data);
               }).
-              error(function (data, status) {
+              error(function (_, status) {
                 deferred.resolve(status);
               });
           }

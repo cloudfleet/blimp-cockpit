@@ -117,4 +117,3 @@ angular.module('blimpCockpitApp')
         todoStorage.put(todos);
     };
 }]);
-

@@ -19,5 +19,5 @@ angular.module('blimpCockpitApp')
 
       return (objectString && JSON.parse(objectString)) || null;
     }
-  }
-}])
+  };
+}]);
