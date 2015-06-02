@@ -11,7 +11,7 @@ angular.module('blimpCockpitApp')
     return {
       restrict: 'AC',
       link: function(scope, el, attr) {
-        el.on('click', function(e) {
+        el.on('click', function() {
           $location.hash(attr.uiScrollTo);
           $anchorScroll();
         });

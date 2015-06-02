@@ -40,8 +40,9 @@ angular.module('ui.load', [])
      * @returns {*} Promise that will be resolved once the script has been loaded.
      */
     this.loadScript = function (src) {
-      if (loaded[src]) return loaded[src].promise;
-
+      if (loaded[src]) {
+        return loaded[src].promise;
+      }
       var deferred = $q.defer();
       var script = $document[0].createElement('script');
       script.src = src;
@@ -67,8 +68,10 @@ angular.module('ui.load', [])
      * @returns {*} Promise that will be resolved once the CSS file has been loaded.
      */
     this.loadCSS = function (href) {
-      if (loaded[href]) return loaded[href].promise;
-
+      if (loaded[href])
+      {
+        return loaded[href].promise;
+      }
       var deferred = $q.defer();
       var style = $document[0].createElement('link');
       style.rel = 'stylesheet';

@@ -30,8 +30,8 @@ angular.module('blimpCockpitApp')
         }
 
         function md(){
-          parent && parent['prepend'](el);
-          !parent && _el['insertAfter'](prev);
+          parent && parent.prepend(el);
+          !parent && _el.insertAfter(prev);
           _el.removeClass('in');
         }
 

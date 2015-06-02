@@ -9,8 +9,8 @@
  */
 angular.module('blimpCockpitApp')
   .controller('SigninFormController',
-  ['$scope', '$http', '$state', 'cockpitApi', '$cookies',
-    function($scope, $http, $state, cockpitApi, $cookies) {
+  ['$scope', '$http', '$state', 'cockpitApi',
+    function($scope, $http, $state, cockpitApi) {
     $scope.user = {};
     $scope.authError = null;
     $scope.login = function() {
@@ -19,11 +19,11 @@ angular.module('blimpCockpitApp')
 
       cockpitApi.login($scope.user.username, $scope.user.password).then(
 
-        function(res){
-          //$scope.$emit('LOGED_IN');
+        function(){
+          console.log('logged in successfully');
           $state.go('app.cockpit');
         },function(res){
-
+          console.log(res);
         }
       );
     };

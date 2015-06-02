@@ -7,29 +7,42 @@
  * route provider of the blimpCockpitApp
  */
 angular.module('blimpCockpitApp')
-  .run(['$state', '$rootScope', 'cockpitApi', '$interval',
-    function ($state, $rootScope, cockpitApi, $interval) {
-      $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+  .run(['$state', '$rootScope', 'cockpitApi',
+    function ($state, $rootScope, cockpitApi) {
+      $rootScope.$on('$stateChangeStart', function (event, toState) {
 
+
+        console.log('Going to ' + toState.name);
         if(toState.data.requireLogin)
         {
-          if(!(cockpitApi.getCurrentUser()))
+          console.log('Login required ... checking for user');
+          if(!cockpitApi.getCurrentUser())
           {
+            console.log('No user found ... redirecting to signin');
             event.preventDefault();
             $state.go('access.signin');
+          }
+          else
+          {
+            console.log('User found ... continuing to ' + toState.name);
+            return true;
           }
         }
         else
         {
           if((toState.name === 'access.forgotpwd' || toState.name === 'access.signin') && cockpitApi.getCurrentUser())
           {
+            console.log('Already logged in ... redirecting to cockpit');
+
             event.preventDefault();
             $state.go('app.cockpit');
+          }
+          else {
+            return true;
           }
 
         }
       });
-
 
     }])
   .run(
@@ -44,7 +57,7 @@ angular.module('blimpCockpitApp')
   ['$stateProvider', '$urlRouterProvider', 'JQ_CONFIG',
     function ($stateProvider, $urlRouterProvider, JQ_CONFIG) {
 
-      $urlRouterProvider.otherwise('access/signin');
+      $urlRouterProvider.otherwise('app/cockpit');
       $stateProvider
         .state('app', {
           abstract: true,
@@ -62,7 +75,7 @@ angular.module('blimpCockpitApp')
               function (uiLoad) {
                 return uiLoad.load(
                   JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                )
+                );
               }]
           }
         })
@@ -96,7 +109,7 @@ angular.module('blimpCockpitApp')
               function (uiLoad) {
                 return uiLoad.load(
                   JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                )
+                );
               }]
           }
         })
@@ -148,7 +161,7 @@ angular.module('blimpCockpitApp')
         .state('access.forgotpwd', {
           url: '/forgotpwd',
           templateUrl: 'views/page_forgotpwd.html'
-        })
+        });
 
 
     }

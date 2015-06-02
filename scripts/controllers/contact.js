@@ -34,7 +34,7 @@ angular.module('blimpCockpitApp')
   $scope.checkItem = function(obj, arr, key){
     var i=0;
     angular.forEach(arr, function(item) {
-      if(item[key].indexOf( obj[key] ) == 0){
+      if(item[key].indexOf( obj[key] ) === 0){
         var j = item[key].replace(obj[key], '').trim();
         if(j){
           i = Math.max(i, parseInt(j)+1);
@@ -71,7 +71,9 @@ angular.module('blimpCockpitApp')
   $scope.deleteItem = function(item){
     $scope.items.splice($scope.items.indexOf(item), 1);
     $scope.item = $filter('orderBy')($scope.items, 'first')[0];
-    if($scope.item) $scope.item.selected = true;
+    if($scope.item) {
+      $scope.item.selected = true;
+    }
   };
 
   $scope.createItem = function(){

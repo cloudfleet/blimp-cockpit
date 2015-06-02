@@ -9,7 +9,7 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  ['$scope', 'cockpitApi', '$cookies',
-    function ($scope, cockpitApi) {
-
+  [
+    function () {
+      console.log('Creaeing cockpit scope');
     }]);

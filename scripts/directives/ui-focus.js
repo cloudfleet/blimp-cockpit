@@ -7,7 +7,7 @@
  * # uiFocus
  */
 angular.module('blimpCockpitApp')
-  .directive('uiFocus', function($timeout, $parse) {
+  .directive('uiFocus', ['$timeout', '$parse', function($timeout, $parse) {
     return {
       link: function(scope, element, attr) {
         var model = $parse(attr.uiFocus);
@@ -23,4 +23,4 @@ angular.module('blimpCockpitApp')
         });
       }
     };
-  });
+  }]);

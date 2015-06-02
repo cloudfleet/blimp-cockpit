@@ -21,7 +21,7 @@ angular.module('blimpCockpitApp')
         }else{
           $state.go('app.cockpit');
         }
-      }, function(x) {
+      }, function() {
         $scope.authError = 'Server Error';
       });
     };

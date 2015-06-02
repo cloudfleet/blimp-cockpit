@@ -100,7 +100,7 @@ angular.module('blimpCockpitApp')
     /* alert on dayClick */
     $scope.precision = 400;
     $scope.lastClickTime = 0;
-    $scope.alertOnEventClick = function (date, jsEvent, view) {
+    $scope.alertOnEventClick = function (date) {
         var time = new Date().getTime();
         if (time - $scope.lastClickTime <= $scope.precision) {
             $scope.events.push({
@@ -112,16 +112,16 @@ angular.module('blimpCockpitApp')
         $scope.lastClickTime = time;
     };
     /* alert on Drop */
-    $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
+    $scope.alertOnDrop = function (event, delta) {
         $scope.alertMessage = ('Event Dropped to make dayDelta ' + delta);
     };
     /* alert on Resize */
-    $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
+    $scope.alertOnResize = function (event, delta) {
         $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
     };
 
     $scope.overlay = $('.fc-overlay');
-    $scope.alertOnMouseOver = function (event, jsEvent, view) {
+    $scope.alertOnMouseOver = function (event, jsEvent) {
         $scope.event = event;
         $scope.overlay.removeClass('left right top').find('.arrow').removeClass('left right top pull-up');
         var wrap = $(jsEvent.target).closest('.fc-event');
@@ -130,16 +130,16 @@ angular.module('blimpCockpitApp')
         var right = cal.width() - (wrap.offset().left - cal.offset().left + wrap.width());
         var top = cal.height() - (wrap.offset().top - cal.offset().top + wrap.height());
         if (right > $scope.overlay.width()) {
-            $scope.overlay.addClass('left').find('.arrow').addClass('left pull-up')
+            $scope.overlay.addClass('left').find('.arrow').addClass('left pull-up');
         } else if (left > $scope.overlay.width()) {
             $scope.overlay.addClass('right').find('.arrow').addClass('right pull-up');
         } else {
             $scope.overlay.find('.arrow').addClass('top');
         }
         if (top < $scope.overlay.height()) {
-            $scope.overlay.addClass('top').find('.arrow').removeClass('pull-up').addClass('pull-down')
+            $scope.overlay.addClass('top').find('.arrow').removeClass('pull-up').addClass('pull-down');
         }
-        (wrap.find('.fc-overlay').length == 0) && wrap.append($scope.overlay);
+        (wrap.find('.fc-overlay').length === 0) && wrap.append($scope.overlay);
     };
 
 
@@ -178,12 +178,12 @@ angular.module('blimpCockpitApp')
     };
 
     /* Change View */
-    $scope.changeView = function (view, calendar) {
+    $scope.changeView = function (view) {
         $('.calendar').fullCalendar('changeView', view);
 
     };
 
-    $scope.today = function (calendar) {
+    $scope.today = function () {
         $('.calendar').fullCalendar('today');
     };
 
