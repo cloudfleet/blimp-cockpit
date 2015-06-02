@@ -31,6 +31,9 @@ angular.module('blimpCockpitApp')
         },
 
         login: function (username, password) {
+
+          console.log('logging in user ' + username)
+
           var deferred = $q.defer();
 
           $http.post('/musterroll/login', {
@@ -43,7 +46,6 @@ angular.module('blimpCockpitApp')
                 success(function(data){
                   storeCurrentUser(data);
                   deferred.resolve(data);
-                  $state.go('app.cockpit');
                 }).
                 error(function () {
                   deferred.resolve(false);

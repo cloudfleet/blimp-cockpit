@@ -28,8 +28,8 @@ angular.module('blimpCockpitApp')
                           '../bower_components/footable/css/footable.core.css'],
       fullcalendar:   [   '../bower_components/moment/moment.js',
                           '../bower_components/fullcalendar/dist/fullcalendar.min.js',
-                          '../bower_components/fullcalendar/dist/fullcalendar.css',
-                          'styles/fullcalendar.theme.css'],
+                          '../bower_components/fullcalendar/dist/fullcalendar.css'],
+                          //'styles/fullcalendar.theme.css'],
       daterangepicker:[   '../bower_components/moment/moment.js',
                           '../bower_components/bootstrap-daterangepicker/daterangepicker.js',
                           '../bower_components/bootstrap-daterangepicker/daterangepicker-bs3.css']
