@@ -6,5 +6,5 @@ FROM nginx
 
 RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
-ADD ./nginx-dev.conf /etc/nginx/conf.d/default.conf
+ADD ./nginx-dist.conf /etc/nginx/conf.d/default.conf
 ADD ./ /usr/share/nginx/html/
