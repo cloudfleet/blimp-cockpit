@@ -18,15 +18,14 @@
  */
 angular.module('ui.jq', ['ui.load']).
   value('uiJqConfig', {}).
-  directive('uiJq', ['uiJqConfig', 'JQ_CONFIG', 'uiLoad', '$timeout', function uiJqInjectingFunction(uiJqConfig, JQ_CONFIG, uiLoad, $timeout) {
+  directive('uiJq', ['uiJqConfig', '$timeout', function uiJqInjectingFunction(uiJqConfig, $timeout) {
+
+  var JQ_CONFIG = {};
 
   return {
     restrict: 'A',
     compile: function uiJqCompilingFunction(tElm, tAttrs) {
 
-      if (!angular.isFunction(tElm[tAttrs.uiJq]) && !JQ_CONFIG[tAttrs.uiJq]) {
-        throw new Error('ui-jq: The "' + tAttrs.uiJq + '" function does not exist');
-      }
       var options = uiJqConfig && uiJqConfig[tAttrs.uiJq];
 
       return function uiJqLinkingFunction(scope, elm, attrs) {

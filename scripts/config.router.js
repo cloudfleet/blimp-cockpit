@@ -54,9 +54,9 @@ angular.module('blimpCockpitApp')
   ]
 )
   .config(
-  ['$stateProvider', '$urlRouterProvider', 'JQ_CONFIG',
-    function ($stateProvider, $urlRouterProvider, JQ_CONFIG) {
-
+  ['$stateProvider', '$urlRouterProvider', '$locationProvider',
+    function ($stateProvider, $urlRouterProvider, $locationProvider) {
+      $locationProvider.html5Mode(true);
       $urlRouterProvider.otherwise('app/cockpit');
       $stateProvider
         .state('app', {
@@ -69,15 +69,7 @@ angular.module('blimpCockpitApp')
         })
         .state('app.cockpit', {
           url: '/cockpit',
-          templateUrl: 'views/app_dashboard.html',
-          resolve: {
-            deps: ['uiLoad',
-              function (uiLoad) {
-                return uiLoad.load(
-                  JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                );
-              }]
-          }
+          templateUrl: 'views/app_dashboard.html'
         })
 
 
@@ -103,15 +95,7 @@ angular.module('blimpCockpitApp')
         // fullCalendar
         .state('app.calendar', {
           url: '/calendar',
-          templateUrl: 'views/app_calendar.html',
-          resolve: {
-            deps: ['uiLoad',
-              function (uiLoad) {
-                return uiLoad.load(
-                  JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                );
-              }]
-          }
+          templateUrl: 'views/app_calendar.html'
         })
 
         .state('apps', {
@@ -151,11 +135,6 @@ angular.module('blimpCockpitApp')
         .state('access.signin', {
           url: '/signin',
           templateUrl: 'views/page_signin.html'
-
-        })
-        .state('access.signup', {
-          url: '/signup',
-          templateUrl: 'views/page_signup.html'
 
         })
         .state('access.forgotpwd', {
