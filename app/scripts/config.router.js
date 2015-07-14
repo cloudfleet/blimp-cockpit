@@ -153,11 +153,6 @@ angular.module('blimpCockpitApp')
           templateUrl: 'views/page_signin.html'
 
         })
-        .state('access.signup', {
-          url: '/signup',
-          templateUrl: 'views/page_signup.html'
-
-        })
         .state('access.forgotpwd', {
           url: '/forgotpwd',
           templateUrl: 'views/page_forgotpwd.html'
