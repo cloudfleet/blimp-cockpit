@@ -54,8 +54,8 @@ angular.module('blimpCockpitApp')
   ]
 )
   .config(
-  ['$stateProvider', '$urlRouterProvider', 'JQ_CONFIG',
-    function ($stateProvider, $urlRouterProvider, JQ_CONFIG) {
+  ['$stateProvider', '$urlRouterProvider', 
+    function ($stateProvider, $urlRouterProvider) {
 
       $urlRouterProvider.otherwise('app/cockpit');
       $stateProvider
@@ -69,15 +69,7 @@ angular.module('blimpCockpitApp')
         })
         .state('app.cockpit', {
           url: '/cockpit',
-          templateUrl: 'views/app_dashboard.html',
-          resolve: {
-            deps: ['uiLoad',
-              function (uiLoad) {
-                return uiLoad.load(
-                  JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                );
-              }]
-          }
+          templateUrl: 'views/app_dashboard.html'
         })
 
 
@@ -103,15 +95,7 @@ angular.module('blimpCockpitApp')
         // fullCalendar
         .state('app.calendar', {
           url: '/calendar',
-          templateUrl: 'views/app_calendar.html',
-          resolve: {
-            deps: ['uiLoad',
-              function (uiLoad) {
-                return uiLoad.load(
-                  JQ_CONFIG.fullcalendar.concat('scripts/controllers/calendar.js')
-                );
-              }]
-          }
+          templateUrl: 'views/app_calendar.html'
         })
 
         .state('apps', {
