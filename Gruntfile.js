@@ -418,32 +418,6 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/fonts'
         }]
       },
-      /* copy in original scripts to .raw/
-      so that lazy loading can use them */
-      raw1: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.raw %>',
-          src: [
-            'scripts/{,*/}*.*'
-          ]
-        }]
-      },
-      /* copy in original scripts from .raw/
-       to dist/, so that lazy loading can use them */
-      raw2: {
-        files: [{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.raw %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            'scripts/{,*/}*.*'
-          ]
-        }]
-      },
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
@@ -524,7 +498,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'copy:raw1', // for lazy loading
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
@@ -536,8 +509,7 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin',
-    'copy:raw2' // for lazy loading
+    'htmlmin'
   ]);
 
   grunt.registerTask('deploy', [
