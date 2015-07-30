@@ -13,7 +13,8 @@ angular.module('blimpCockpitApp')
 
 
         console.log('Going to ' + toState.name);
-        if(toState.data.requireLogin)
+        return true;
+        /*if(toState.data.requireLogin)
         {
           console.log('Login required ... checking for user');
           if(!cockpitApi.getCurrentUser())
@@ -27,8 +28,8 @@ angular.module('blimpCockpitApp')
             console.log('User found ... continuing to ' + toState.name);
             return true;
           }
-        }
-        else
+        }*/
+        /*else
         {
           if((toState.name === 'access.forgotpwd' || toState.name === 'access.signin') && cockpitApi.getCurrentUser())
           {
@@ -41,7 +42,7 @@ angular.module('blimpCockpitApp')
             return true;
           }
 
-        }
+        }*/
       });
 
     }])
@@ -60,6 +61,12 @@ angular.module('blimpCockpitApp')
       $urlRouterProvider.otherwise('app/cockpit');
       $stateProvider
         .state('app', {
+          resolve: {
+            cockpitApi: 'cockpitApi',
+            currentUser: function(cockpitApi) {
+              return cockpitApi.loadCurrentUser();
+            }
+          },
           abstract: true,
           url: '/app',
           templateUrl: 'views/app.html',
@@ -100,6 +107,12 @@ angular.module('blimpCockpitApp')
 
         .state('apps', {
           abstract: true,
+          resolve: {
+            cockpitApi: 'cockpitApi',
+            currentUser: function(cockpitApi) {
+              return cockpitApi.loadCurrentUser();
+            }
+          },
           url: '/apps',
           templateUrl: 'views/layout.html',
           data: {

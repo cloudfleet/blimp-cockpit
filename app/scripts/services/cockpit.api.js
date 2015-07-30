@@ -78,24 +78,17 @@ angular.module('blimpCockpitApp')
         loadCurrentUser: function () {
           var deferred = $q.defer();
 
-          var storedUser = $localstorage.getObject(localStorageUserKey);
+          deferred.resolve(status);
+          $http.get('/musterroll/api/v1/currentUser').
+            success(function (data) {
+              storeCurrentUser(data);
+              deferred.resolve(data);
+            }).
+            error(function (_, status) {
+              clearCurrentUser();
+              deferred.resolve(null);
+            });
 
-          if(storedUser && storedUser.id)
-          {
-            deferred.resolve(storedUser);
-          }
-          else
-          {
-            deferred.resolve(status);
-            $http.get('/musterroll/api/v1/currentUser').
-              success(function (data) {
-                storeCurrentUser(data);
-                deferred.resolve(data);
-              }).
-              error(function (_, status) {
-                deferred.resolve(status);
-              });
-          }
           return deferred.promise;
         }
 
