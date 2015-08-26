@@ -9,7 +9,12 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [
-    function () {
-      console.log('Creaeing cockpit scope');
+  [ '$scope', 'mailpileApi'
+    function ($scope, mailpileApi) {
+      console.log('Creating cockpit scope');
+      mailpileApi.getInboxCount().success(function(count){
+        $scope.inboxCount = count;
+      });
+
+
     }]);

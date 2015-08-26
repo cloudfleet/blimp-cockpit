@@ -8,6 +8,7 @@
                     <h1 class="m-n font-thin h3 text-black">Cockpit</h1>
                     <small class="text-muted">Welcome to Cloud Fleet Admin</small>
                 </div>
+                <!-- NODATA
                 <div class="col-sm-6 text-right hidden-xs">
 
                     <div class="inline text-left">
@@ -20,6 +21,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
         <!-- / main header -->
@@ -30,6 +32,7 @@
             <div class="row">
 
                 <!-- info unread email -->
+                <!-- NODATA
                 <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
@@ -139,6 +142,7 @@
 
                     </div>
                 </div>
+                -->
                 <!-- / info unread email -->
 
                 <!-- info stats -->
@@ -148,12 +152,13 @@
                         <div class="col-xs-6">
                             <a href="/mailpile/{{getCurrentUser().id}}/in/inbox/" class="block panel padder-v bg-cf-orange text-white item">
                                 <div class="h1 font-thin h1 block">Inbox</div>
-                                <span class="text-xs">521</span>
+                                <span class="text-xs">{{inboxCount}}</span>
                                  <span class="bottom text-right w-full">
                                   <i class="fa fa-inbox m-r-sm m-b-sm fa-size-md"></i>
                                 </span>
                             </a>
                         </div>
+                        <!-- NODATA
                         <div class="col-xs-6">
                             <a href class="block panel padder-v bg-cf-orange text-white item">
                                 <span class="font-thin h1 block">Chat</span>
@@ -181,8 +186,10 @@
                                 </span>
                             </a>
                         </div>
+                        -->
                         <!-- / info CTA -->
                         <!-- info bitcoint stats -->
+                        <!-- NODATA
                         <div class="col-xs-12 text-left">
                             <div class="panel panel-default">
                                 <a href class="text-muted m-t-sm m-l inline"><i class="icon-pie-chart"></i></a>
@@ -213,6 +220,7 @@
                                 </ul>
                             </div>
                         </div>
+                        -->
                         <!-- / info bitcoint stats -->
                     </div>
                 </div>
@@ -224,6 +232,7 @@
             <!-- tasks -->
             <div class="row">
                 <!-- tasks todos-->
+                <!-- NODATA
                 <div class="col-xs-6 p-l-xs p-r-xs b-light no-border-xs text-left">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
@@ -264,8 +273,10 @@
                         </div>
                     </div>
                 </div>
+                -->
                 <!-- / tasks todos-->
                 <!-- tasks notes-->
+                <!-- NODATA
                 <div class="col-xs-6 p-l-xs p-r-xs b-light no-border-xs text-left">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
@@ -308,6 +319,8 @@
                         </div>
                     </div>
                 </div>
+
+                -->
                 <!-- / tasks notes-->
             </div>
             <!-- / tasks -->
@@ -318,7 +331,9 @@
 
 
         <!-- calendar directive-->
+        <!-- NODATA
         <div data-cf-Ui-Calendar title="'Whats on this week'" show-Date-Selectors="false" show-list="false" view="'agendaWeek'" show-class="false"></div>
+        -->
         <!-- / calendar directive-->
 
 
@@ -326,8 +341,10 @@
     </div>
     <!-- / main -->
     <!-- right col -->
+    <!-- NODATA
     <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
         <div data-ng-include=" 'views/aside.right.html' "></div>
     </div>
+    -->
     <!-- / right col -->
 </div>
