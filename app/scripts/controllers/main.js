@@ -9,8 +9,8 @@
  */
 angular
   .module('blimpCockpitApp')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi',
-    function ($scope, $translate, $localStorage, $window, cockpitApi) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', 'mailpileApi',
+    function ($scope, $translate, $localStorage, $window, cockpitApi, mailpileApi) {
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -23,6 +23,11 @@ angular
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
+
+      mailpileApi.getInboxCount().success(function(count){
+        $scope.inboxCount = count;
+      });
+
 
       $scope.getCurrentUser = function()
       {
