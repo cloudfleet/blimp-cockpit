@@ -18,7 +18,13 @@ angular.module('blimpCockpitApp')
           var deferred = $q.defer();
           $http.get(mailpileApiUrl + 'search/?q=in:inbox').
             then(function (data) {
-              deferred.resolve(data.stats.total);
+              if(data.stats)
+              {
+                deferred.resolve(data.stats.total);
+              }
+              else {
+                deferred.resolve("n/a");
+              }
             },
             function (_, status) {
 
