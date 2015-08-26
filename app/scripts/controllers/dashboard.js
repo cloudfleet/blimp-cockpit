@@ -9,7 +9,7 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mailpileApi'
+  [ '$scope', 'mailpileApi',
     function ($scope, mailpileApi) {
       console.log('Creating cockpit scope');
 
