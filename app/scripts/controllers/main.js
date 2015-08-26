@@ -24,7 +24,7 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
-      mailpileApi.getInboxCount().success(function(count){
+      mailpileApi.getInboxCount().then(function(count){
         $scope.inboxCount = count;
       });
 
