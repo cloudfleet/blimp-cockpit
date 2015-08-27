@@ -10,7 +10,7 @@
 angular.module('blimpCockpitApp')
   .factory('mailpileApi', ['$resource', '$http', '$q', '$rootScope', '$state', '$localstorage', 'cockpitApi',
     function ($resource, $http, $q, $rootScope, $state, $localstorage, cockpitApi) {
-      var mailpileUrl = '/mailpile/' + cockpitApi.getCurrentUser();
+      var mailpileUrl = '/mailpile/' + cockpitApi.getCurrentUser().id;
       var mailpileApiUrl = mailpileUrl + '/api/0/';
 
       var service = {
