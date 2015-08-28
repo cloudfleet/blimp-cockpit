@@ -17,10 +17,10 @@ angular.module('blimpCockpitApp')
         getInboxCount: function(){
           var deferred = $q.defer();
           $http.get(mailpileApiUrl + 'search/?q=in:inbox').
-            then(function (data) {
-              if(data.result && data.result.stats )
+            then(function (response) {
+              if(response.data.result && response.data.result.stats )
               {
-                deferred.resolve(data.result.stats.total);
+                deferred.resolve(response.data.result.stats.total);
               }
               else {
                 deferred.resolve("n/a");
