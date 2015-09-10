@@ -27,7 +27,7 @@ angular.module('blimpCockpitApp')
 
         getCurrentUser: function()
         {
-          return $localstorage.getObject(localStorageUserKey);
+          return $localstorage.getObject(localStorageUserKey) || {};
         },
 
         login: function (username, password) {
