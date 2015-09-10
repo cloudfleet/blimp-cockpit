@@ -48,12 +48,12 @@ angular.module('blimpCockpitApp')
                   deferred.resolve(data);
                 }).
                 error(function () {
-                  deferred.resolve(false);
+                  deferred.reject(false);
 
                 });
             }).
             error(function () {
-              deferred.resolve(false);
+              deferred.reject(false);
 
             });
           return deferred.promise;
@@ -69,7 +69,7 @@ angular.module('blimpCockpitApp')
             }).
             error(function (_, status) {
 
-              deferred.resolve(status);
+              deferred.reject(status);
             });
 
           return deferred.promise;
@@ -86,7 +86,7 @@ angular.module('blimpCockpitApp')
             }).
             error(function (_, status) {
               clearCurrentUser();
-              deferred.resolve(null);
+              deferred.reject(null);
             });
 
           return deferred.promise;
