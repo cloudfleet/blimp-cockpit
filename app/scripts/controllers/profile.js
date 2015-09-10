@@ -11,8 +11,14 @@ angular.module('blimpCockpitApp')
   .controller('ProfileController',
   ['$scope', '$http', '$state', 'cockpitApi',
     function($scope, $http, $state, cockpitApi) {
+
 	$scope.changePassword = function() {
+
+    
+
 	};
+
 	$scope.updateUser = function() {
 	};
+
   }]);
