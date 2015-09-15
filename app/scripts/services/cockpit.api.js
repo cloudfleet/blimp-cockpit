@@ -90,7 +90,46 @@ angular.module('blimpCockpitApp')
             });
 
           return deferred.promise;
-        }
+        },
+
+        changePassword: function (oldPassword, newPassword) {
+          var deferred = $q.defer();
+
+          deferred.resolve(status);
+          $http.put('/musterroll/api/v1/users/' + service.getCurrentUser().id + '/password',
+            {
+              oldPassword: oldPassword,
+              password: newPassword
+            }
+          ).
+            success(function (data) {
+              deferred.resolve(data);
+            }).
+            error(function (_, status) {
+              deferred.reject(null);
+            });
+
+          return deferred.promise;
+        },
+
+        saveUser: function (newUser) {
+          var deferred = $q.defer();
+
+          deferred.resolve(status);
+          $http.post('/musterroll/api/v1/users/' + newUser.id,
+            newUser
+          ).
+            success(function (data) {
+              storeCurrentUser(data);
+              deferred.resolve(data);
+            }).
+            error(function (_, status) {
+              deferred.reject(null);
+            });
+
+          return deferred.promise;
+        },
+
 
 
 

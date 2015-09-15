@@ -81,6 +81,11 @@ angular.module('blimpCockpitApp')
 
 
         // mail
+        .state('app.profile', {
+          url: '/profile',
+          templateUrl: 'views/app_profile.html'
+        })
+        // mail
         .state('app.mail', {
           abstract: true,
           url: '/mail',
