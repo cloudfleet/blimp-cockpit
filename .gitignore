@@ -25,3 +25,6 @@ dist
 .sass-cache
 bower_components
 .raw
+
+# ignore the conf for proxying to your own blimp
+nginx-dev-ownblimp.conf

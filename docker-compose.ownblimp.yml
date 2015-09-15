@@ -1,0 +1,10 @@
+cockpit:
+  image: nginx
+  volumes:
+    - ./app/:/usr/share/nginx/html/
+    - ./bower_components/:/usr/share/nginx/html/bower_components/
+    - ./.tmp/styles/:/usr/share/nginx/html/styles/
+    - ./nginx-dev-ownblimp.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./dist/fonts:/usr/share/nginx/html/fonts
+  ports:
+    - "8080:80"

@@ -1,0 +1,30 @@
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        rewrite /cockpit/(.*) /$1 break;
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+        try_files $uri $uri/ /index.html;
+        # dev settings to enable live previews
+        # access_log   off;
+        # expires      off;
+        # add_header   Cache-Control private;
+        sendfile     off;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy apis
+    #
+    location ~ /(musterroll|mailpile)/ {
+      proxy_pass https://blimp.example.com;
+      proxy_ssl_server_name on;
+      proxy_redirect https://blimp.example.com/ http://localhost:8080/;
+    }
+
+}
