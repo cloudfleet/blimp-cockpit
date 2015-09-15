@@ -41,6 +41,19 @@ follow these steps:
   (replace localhost with the output of `boot2docker ip` on OS X)
 - Rock out!
 
+To test the dist folder run:
+
+    docker-compose -f docker-compose.dist.yml up
+
+And to attach it to a real Blimp backend, fill out the
+*nginx-dev.conf* file based on *nginx-dev-ownblimp.conf.example* to match your
+settings and then run:
+
+To test the dist folder run:
+
+    docker-compose -f docker-compose.ownblimp.yml up
+
+
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
