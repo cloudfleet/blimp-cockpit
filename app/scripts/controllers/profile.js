@@ -32,6 +32,36 @@ angular.module('blimpCockpitApp')
 
 	};
 
+  $scope.removeAlias = function(alias) {
+    var user = cockpitApi.getCurrentUser();
+    var current_aliases = user.aliases || [];
+
+    var pos = current_aliases.indexOf(alias);
+    current_aliases.splice(pos, 1);
+
+    user.aliases = current_aliases;
+
+    cockpitApi.updateUser(user);
+
+  };
+
+
+  $scope.addAlias = function() {
+    var new_alias = $scope.newAlias;
+
+    var user = cockpitApi.getCurrentUser();
+    var current_aliases = user.aliases || [];
+
+    current_aliases.push(new_alias);
+
+    user.aliases = current_aliases;
+
+    cockpitApi.updateUser(user);
+
+    $scope.newAlias = '';
+
+  };
+
 	$scope.updateUser = function() {
 	};
 

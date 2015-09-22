@@ -112,11 +112,11 @@ angular.module('blimpCockpitApp')
           return deferred.promise;
         },
 
-        saveUser: function (newUser) {
+        updateUser: function (newUser) {
           var deferred = $q.defer();
 
           deferred.resolve(status);
-          $http.post('/musterroll/api/v1/users/' + newUser.id,
+          $http.put('/musterroll/api/v1/users/' + newUser.id,
             newUser
           ).
             success(function (data) {
