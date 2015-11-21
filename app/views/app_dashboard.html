@@ -32,12 +32,11 @@
             <div class="row">
 
                 <!-- info unread email -->
-                <!-- NODATA
                 <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
                             <a ui-sref="app.mail.list">
-                                <span class="badge bg-danger pull-right">14</span>
+                                <span class="badge bg-danger pull-right">{{unread_mails.length}}</span>
                                 <i class="fa fa-envelope fa-fw text-muted"></i>
                                 Inbox / Unread</a>
                         </div>
@@ -66,67 +65,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Isidra</td>
-                                    <td>accusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Shona</td>
-                                    <td><a href>quos dolores et quas molestias </a></td>
-                                </tr>
-                                <tr>
-                                    <td>Granville</td>
-                                    <td>excepturi sint occaecati cupiditate non prov</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Easer</td>
-                                    <td>qui blanditiis </td>
-                                </tr>
-                                <tr>
-                                    <td>Maple</td>
-                                    <td>praesentium voluptatum </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Maxine</td>
-                                    <td><a href>deleniti atque corrupti </a></td>
-                                </tr>
-                                <tr>
-                                    <td>Lorraine</td>
-                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Lizzee</td>
-                                    <td>quos dolores et quas molestias</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Judi</td>
-                                    <td>excepturi sint occaecati cupiditate non prov</td>
-                                </tr>
-                                <tr>
-                                    <td>Lauri</td>
-                                    <td>accusamus et iusto odio dignissimos ducimusr</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Lorraine</td>
-                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Lizzee</td>
-                                    <td>occaecati cupiditate non prov</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Judi</td>
-                                    <td>quos dolores et quas molestias</td>
-                                </tr>
-                                <tr>
-                                    <td>Lauri</td>
-                                    <td>accusamus et iusto odio dignissimos ducimus</td>
-                                    </td>
+                                <tr ng-repeat="mail in unread_mails">
+                                    <td>{{mail.from | format_contact}}</td>
+                                    <td>{{mail.subject}}</td>
                                 </tr>
 
                                 </tbody>
@@ -142,7 +83,6 @@
 
                     </div>
                 </div>
-                -->
                 <!-- / info unread email -->
 
                 <!-- info stats -->

@@ -9,10 +9,16 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mailpileApi',
-    function ($scope, mailpileApi) {
+  [ '$scope', 'mailpileApi', 'mails',
+    function ($scope, mailpileApi, mails) {
       console.log('Creating cockpit scope');
       mailpileApi.getInboxCount().then(function(count){
         $scope.inboxCount = count;
       });
+
+      mails.all().then(
+        function(data) {
+          $scope.unread_mails = data;
+        }
+      );
     }]);
