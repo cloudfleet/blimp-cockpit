@@ -18,7 +18,41 @@ angular.module('blimpCockpitApp')
 
       mails.all().then(
         function(data) {
-          $scope.unread_mails = data;
+          $scope.last_mails = data;
         }
       );
+
+      // MOCKUP
+      setTimeout(function () {
+        $scope.last_mails.unshift(    {
+              "id": 10,
+              "subject": "Cat Pictures",
+              "from": "christoph@cloudfleet.io",
+              "avatar": "images/a10.jpg",
+              "to":[
+                {"name":"Mogen", "email":"menazine@hotmail.com"}
+              ],
+              "content":"Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
+              "attach":[
+                {"name":"c1.jpg", "url":"images/c1.jpg"},
+                {"name":"c3.jpg", "url":"images/c3.jpg"}
+              ],
+              "date":"12:20 7/23/2014",
+              "label":"cloudfleet",
+              "fold":"important",
+              "unread": true
+            });
+        $scope.$apply();
+      }, 10000);
+
+      $scope.mailStyle = function(mail)
+      {
+        return {'font-weight': mail.unread ? 'bold' : 'normal'};
+      };
+
+      $scope.countUnread = function() {
+        return 0 || $scope.last_mails && $scope.last_mails.filter((item) => {return item.unread;}).length;
+      }
+
+      // END MOCKUP
     }]);
