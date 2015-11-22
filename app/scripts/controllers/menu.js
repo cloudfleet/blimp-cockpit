@@ -9,10 +9,7 @@
  */
 angular.module('blimpCockpitApp')
   .controller('MenuCtrl',
-  [ '$scope', 'mailpileApi',
-    function ($scope, mailpileApi) {
+  [ '$scope',
+    function ($scope) {
       console.log('Creating menu scope');
-      mailpileApi.getInboxCount().then(function(count){
-        $scope.inboxCount = count;
-      });
     }]);

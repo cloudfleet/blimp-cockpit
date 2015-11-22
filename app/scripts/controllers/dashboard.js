@@ -9,12 +9,9 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mailpileApi', 'mock', 'todoStorage',
-    function ($scope, mailpileApi, mock, todoStorage) {
+  [ '$scope', 'mock', 'todoStorage',
+    function ($scope, mock, todoStorage) {
       console.log('Creating cockpit scope');
-      mailpileApi.getInboxCount().then(function(count){
-        $scope.inboxCount = count;
-      });
 
       $scope.todos = todoStorage.get();
 
