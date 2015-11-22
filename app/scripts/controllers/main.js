@@ -9,8 +9,8 @@
  */
 angular
   .module('blimpCockpitApp')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', 'mailpileApi',
-    function ($scope, $translate, $localStorage, $window, cockpitApi, mailpileApi) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', 'mailpileApi', 'mock',
+    function ($scope, $translate, $localStorage, $window, cockpitApi, mailpileApi, mock) {
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -28,6 +28,23 @@ angular
       {
         return cockpitApi.getCurrentUser();
       };
+
+      mock.allNotifications().then(
+        function(data) {
+          $scope.notifications = data;
+        }
+      );
+
+      setTimeout(function () {
+        $scope.notifications.unshift(
+          {
+              "text": "Your mother will have birthday soon!",
+              "date": Date.now()
+
+          });
+        $scope.$apply();
+      }, 10000);
+
 
       // config
       $scope.app = {

@@ -9,14 +9,14 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mailpileApi', 'mails',
-    function ($scope, mailpileApi, mails) {
+  [ '$scope', 'mailpileApi', 'mock',
+    function ($scope, mailpileApi, mock) {
       console.log('Creating cockpit scope');
       mailpileApi.getInboxCount().then(function(count){
         $scope.inboxCount = count;
       });
 
-      mails.all().then(
+      mock.allMails().then(
         function(data) {
           $scope.last_mails = data;
         }
@@ -43,7 +43,7 @@ angular.module('blimpCockpitApp')
               "unread": true
             });
         $scope.$apply();
-      }, 10000);
+      }, 5000);
 
       $scope.mailStyle = function(mail)
       {
