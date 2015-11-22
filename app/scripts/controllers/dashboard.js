@@ -21,9 +21,6 @@ angular.module('blimpCockpitApp')
         return {'font-weight': mail.unread ? 'bold' : 'normal'};
       };
 
-      $scope.countUnread = function() {
-        return 0 || $scope.last_mails && $scope.last_mails.filter((item) => {return item.unread;}).length;
-      }
 
       // END MOCKUP
     }]);

@@ -24,16 +24,19 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
-      mailpileApi.getInboxCount().then(function(count){
-        $scope.inboxCount = count;
+      /*mailpileApi.getInboxCount().then(function(count){
+        $scope.inboxCount = 10;// MOCKUP count;
         $scope.$apply();
       });
+      */
 
 
       $scope.getCurrentUser = function()
       {
         return cockpitApi.getCurrentUser();
       };
+
+      // MOCKUP
 
       mock.allNotifications().then(
         function(data) {
@@ -47,8 +50,15 @@ angular
         }
       );
 
+      $scope.countUnread = function() {
+        return ($scope.last_mails && $scope.last_mails.filter((item) => {return item.unread;}).length) || null;
+      }
 
-      // MOCKUP
+      $scope.inboxCount = function() {
+        return 0 || $scope.last_mails && $scope.last_mails.length;
+      }
+
+
       setTimeout(function () {
         $scope.last_mails.unshift(    {
               "id": 10,
