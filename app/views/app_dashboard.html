@@ -183,33 +183,12 @@
 
 
                         <div class="wrapper-sm m-b">
-                            <div class="m-b hover-anchor">
+                            <div class="m-b hover-anchor" ng-repeat="todo in todos">
                                 <a class="text-muted "><i class="icon-close text-md m-t-xs pull-right"></i></a>
                                 <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
+                                    <input type="checkbox" ng-model="todo.completed"><i></i>
                                 </label>
-                                <span>Feed cat</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Pick up the dog</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Kick-off meeting</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Morning running</span>
+                                <span>{{todo.title}}</span>
                             </div>
                         </div>
                     </div>

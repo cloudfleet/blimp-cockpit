@@ -11,6 +11,18 @@ angular.module('blimpCockpitApp')
   .factory('todoStorage', function () {
     var STORAGE_ID = 'todos';
 
+    localStorage.setItem(STORAGE_ID, JSON.stringify([
+      {
+        "title": "Feed cat",
+        "completed": false
+      },
+      {
+        "title": "Morning running",
+        "completed": false
+      }
+    ]));
+
+
     return {
         get: function () {
             return JSON.parse(localStorage.getItem(STORAGE_ID) || '[]');
@@ -33,6 +45,8 @@ angular.module('blimpCockpitApp')
  */
 angular.module('blimpCockpitApp')
   .controller('TodoCtrl', ['$scope', '$location', '$filter', 'todoStorage', function ($scope, $location, $filter, todoStorage) {
+
+
     var todos = $scope.todos = todoStorage.get();
 
     $scope.newTodo = '';

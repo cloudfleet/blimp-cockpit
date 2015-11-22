@@ -22,7 +22,7 @@
     <ul class="list-group">
       <li ng-repeat="todo in todos | filter:statusFilter track by $index" ng-class="{completed: todo.completed, editing: todo == editedTodo}" class="list-group-item">
         <div class="hover-anchor" ng-dblclick="editTodo(todo)" ng-hide="todo.editedTodo">
-          <a ng-click="removeTodo(todo)" class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+          <a ng-click="removeTodo(todo)" class="text-muted"><i class="icon-close text-md m-t-xs pull-right"></i></a>
           <label class="i-checks i-checks-sm">
             <input type="checkbox" ng-model="todo.completed" ng-change="todoCompleted(todo)"><i></i>
           </label>
