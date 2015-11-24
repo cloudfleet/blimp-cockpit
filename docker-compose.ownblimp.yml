@@ -6,5 +6,7 @@ cockpit:
     - ./.tmp/styles/:/usr/share/nginx/html/styles/
     - ./nginx-dev-ownblimp.conf:/etc/nginx/conf.d/default.conf:ro
     - ./dist/fonts:/usr/share/nginx/html/fonts
+    - ./.ssl:/etc/ssl
   ports:
     - "8080:80"
+    - "443:443"
