@@ -66,7 +66,7 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="mail in last_mails" ng-style="mailStyle(mail)">
-                                    <td>{{mail.from | format_contact}}</td>
+                                    <td title="{{mail.from.email}}">{{mail.from.name | format_contact}}</td>
                                     <td>{{mail.subject}}</td>
                                 </tr>
 

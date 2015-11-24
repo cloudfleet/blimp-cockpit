@@ -63,10 +63,10 @@ angular
         $scope.last_mails.unshift(    {
               "id": 10,
               "subject": "Cat Pictures",
-              "from": "christoph@cloudfleet.io",
+              "from": {"name": "Christoph Witzany", "email": "christoph@cloudfleet.io"},
               "avatar": "images/a10.jpg",
               "to":[
-                {"name":"Mogen", "email":"menazine@hotmail.com"}
+                {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
               ],
               "content":"Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
               "attach":[
