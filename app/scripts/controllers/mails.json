@@ -2,11 +2,11 @@
   "mails":[
     {
       "id": 10,
-      "subject": "cloudfleet is Awesome",
-      "from": "james@gmail.com",
+      "subject": "NSA hates us ;)",
+      "from": {"email":"kermit@cloudfleet.io", "name": "Dražen Lučanin"},
       "avatar": "images/a10.jpg",
       "to":[
-        {"name":"Mogen", "email":"menazine@hotmail.com"}
+        {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
       ],
       "content":"Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
       "attach":[
@@ -19,24 +19,25 @@
     },
     {
       "id": 9,
-      "subject": "cloudfleet - all in one cloud solution",
-      "from": "james@gmail.com",
+      "subject": "CloudFleet is Awesome!",
+      "from": {"email":"edward@freedomofpress.org", "name": "Edward Snowden"},
       "avatar": "images/a9.jpg",
       "to":[
-        {"name":"Mogen", "email":"menazine@hotmail.com"}
+        {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
       ],
       "content":"Retur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
       "date":"12:20 7/23/2014",
       "label":"cloudfleet",
-      "fold":"important"
+      "fold":"important",
+      "unread": true
     },
     {
       "id": 8,
-      "subject": "cloudfleet",
-      "from": "jessica@gmail.com",
+      "subject": "Interested in CloudFleet",
+      "from": {"email":"aiweiwei@artoffreedom.info", "name": "Ai Wei Wei"},
       "avatar": "images/a1.jpg",
       "to":[
-        {"name":"Mogen", "email":"menazine@hotmail.com"}
+        {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
       ],
       "content":"Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
       "attach":[
@@ -48,11 +49,11 @@
     },
     {
       "id": 7,
-      "subject": "Lazy loading cloudfleet controllers, directives and services",
-      "from": "lucy@hotmail.com",
+      "subject": "Our Security Audit",
+      "from": {"email":"x40@cloudfleet.io", "name": "Mark Evenson"},
       "avatar": "images/a2.jpg",
       "to":[
-        {"name":"Mogen", "email":"menazine@hotmail.com"}
+        {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
       ],
       "content":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend condimentum nisl eu consectetur. Integer eleifend, nisl venenatis consequat iaculis, lectus arcu malesuada sem, dapibus porta quam lacus eu neque.",
       "date":"10:20 7/22/2014",
@@ -62,11 +63,11 @@
     },
     {
       "id": 6,
-      "subject": "What a great day",
-      "from": "Jobs@jobhunter.com",
+      "subject": "CloudFleet conquers new markets!",
+      "from": {"email":"shred@cloudfleet.io", "name": "Ömer Timucin Ayasli"},
       "avatar": "images/a3.jpg",
       "to":[
-        {"name":"Mogen", "email":"menazine@hotmail.com"}
+        {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
       ],
       "content":"Duis non malesuada est, quis congue nibh. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat. Vestibulum ullamcorper sodales nisi nec condimentum. Mauris convallis mauris at pellentesque volutpat. Phasellus at ultricies neque, quis malesuada augue. Donec eleifend",
       "date":"3:20 7/22/2014",
