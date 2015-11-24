@@ -9,8 +9,8 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mock', 'todoStorage',
-    function ($scope, mock, todoStorage) {
+  [ '$scope', 'mock', 'todoStorage', '$uibModal',
+    function ($scope, mock, todoStorage, $uibModal) {
       console.log('Creating cockpit scope');
 
       $scope.todos = todoStorage.get();
@@ -21,6 +21,27 @@ angular.module('blimpCockpitApp')
         return {'font-weight': mail.unread ? 'bold' : 'normal'};
       };
 
+      $scope.closeOpenedMail = function () {
+        $scope.modalInstance.close();
+      };
 
+      $scope.openMail = function (mail) {
+
+        $scope.opened_mail = mail;
+
+          $scope.modalInstance = $uibModal.open({
+            animation: true,
+            scope: $scope,
+            templateUrl: 'myModalContent.html',
+            controller: 'DashboardCtrl',
+            size: "lg",
+            resolve: {
+              items: function () {
+                return $scope.items;
+              }
+            }
+          });
+
+        };
       // END MOCKUP
     }]);

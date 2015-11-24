@@ -62,15 +62,15 @@ angular
       setTimeout(function () {
         $scope.last_mails.unshift(    {
               "id": 10,
-              "subject": "Cat Pictures",
+              "subject": "Cat Picture",
               "from": {"name": "Christoph Witzany", "email": "christoph@cloudfleet.io"},
               "avatar": "images/a10.jpg",
               "to":[
                 {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
               ],
-              "content":"Titudin venenatis ipsum ac feugiat. Vestibulum ullamcorper Neque quam. Aliquam sollicitudin venenatis ipsum ac feugiat.",
+              "content":"Look at this cutie!",
               "attach":[
-                {"name":"c1.jpg", "url":"images/c1.jpg"},
+                {"name":"Cute Cat", "url":"images/cat.jpg"},
                 {"name":"c3.jpg", "url":"images/c3.jpg"}
               ],
               "date":"12:20 7/23/2014",

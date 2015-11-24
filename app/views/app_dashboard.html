@@ -65,8 +65,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="mail in last_mails" ng-style="mailStyle(mail)">
-                                    <td title="{{mail.from.email}}">{{mail.from.name | format_contact}}</td>
+                                <tr ng-repeat="mail in last_mails" ng-style="mailStyle(mail)" ng-click="openMail(mail)">
+                                    <td title="{{mail.from.email}}" ng-click="openMail(mail)">{{mail.from.name | format_contact}}</td>
                                     <td>{{mail.subject}}</td>
                                 </tr>
 
@@ -80,6 +80,27 @@
                                 </tfoot>
                             </table>
                         </div>
+                        <script type="text/ng-template" id="myModalContent.html">
+                          <div class="modal-header">
+                              <h3 class="modal-title">{{opened_mail.subject}}</h3>
+                          </div>
+                          <div class="modal-body">
+                              <p>
+                                  <strong>From: </strong>
+                                  {{opened_mail.from.name}} &lt;{{opened_mail.from.email}}&gt;
+                              </p>
+                              <p>
+                                {{opened_mail.content}}
+                              </p>
+                              <p>
+                                <img src="{{opened_mail.attach[0].url}}" alt="{{opened_mail.attach[0].name}}" style="width: 100%">
+                              </p>
+                          </div>
+                          <div class="modal-footer">
+                              <button class="btn btn-primary" type="button" ng-click="closeOpenedMail()">Close</button>
+                          </div>
+                      </script>
+
 
                     </div>
                 </div>
