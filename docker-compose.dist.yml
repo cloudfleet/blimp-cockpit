@@ -8,6 +8,7 @@ cockpit:
     #- ./nginx-default-dev.conf:/etc/nginx/conf.d/default.conf:ro
     - ./nginx-default-dist.conf:/etc/nginx/conf.d/default.conf:ro
     - ./dist/nginx-dist.conf:/etc/nginx/nginx.conf:ro
+    - ./dist/mime.types:/etc/nginx/mime.types:ro
     #- ./dist/fonts:/usr/share/nginx/html/fonts
   ports:
     - "8080:80"

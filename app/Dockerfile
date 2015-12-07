@@ -11,4 +11,5 @@ RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
 ADD ./nginx-default-dist.conf /etc/nginx/conf.d/default.conf
 ADD ./nginx-dist.conf /etc/nginx/nginx.conf
+ADD ./mime.types /etc/nginx/mime.types
 ADD ./ /usr/share/nginx/html/
