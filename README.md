@@ -27,6 +27,12 @@ If you want to add a dependency from [bower.io](http://bower.io/search/), do:
 For example, to add the `angular-ui-router` do
 `bower install --save angular-ui-router`.
 
+To quickly test the static files, run `grunt` and from the *dist/* folder run
+some static file server like:
+
+    python -m SimpleHTTPServer # serves files at http://localhost:8000/cockpit
+
+
 ### In a docker container
 
 To develop with the other necessary CloudFleet services (user management),
@@ -40,6 +46,7 @@ follow these steps:
 - Open [http://localhost:8080/cockpit/]() in your browser
   (replace localhost with the output of `boot2docker ip` on OS X)
 - Rock out!
+
 
 To test the dist folder run:
 
