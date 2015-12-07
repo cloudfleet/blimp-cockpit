@@ -5,9 +5,10 @@ cockpit:
   image: nginx
   volumes:
     - ./dist/:/usr/share/nginx/html/
-    - ./nginx-default-dev.conf:/etc/nginx/conf.d/default.conf:ro
-    #- ./nginx-default-dist.conf:/etc/nginx/conf.d/default.conf:ro
-    #- ./dist/nginx.conf:/etc/nginx/nginx.conf:ro
+    #- ./nginx-default-dev.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./nginx-default-dist.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./dist/nginx-dist.conf:/etc/nginx/nginx.conf:ro
+    #- ./dist/fonts:/usr/share/nginx/html/fonts
   ports:
     - "8080:80"
   links:

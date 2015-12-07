@@ -383,8 +383,8 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'Dockerfile',
-            'nginx-dist.conf', // the production Dockerfile
+            'Dockerfile', // production Dockerfile
+            '*.{conf,types}', // production nginx configs
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
