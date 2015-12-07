@@ -418,6 +418,21 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      // another copy necessary because of
+      // https://github.com/cloudfleet/blimp-cockpit/commit/deb1f78320779fcd3ad292192ed1b9b4dcb121d2
+      // I need a way to sanely test the dist folder without any
+      // Docker dependencies
+      another: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.dist %>',
+          dest: '<%= yeoman.dist %>/cockpit',
+          src: [
+            '{,*/}*.*',
+          ]
+        }]
       }
     },
 
@@ -504,7 +519,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:another'
   ]);
 
   grunt.registerTask('deploy', [
