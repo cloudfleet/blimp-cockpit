@@ -1,3 +1,7 @@
+# An example version of the nginx config file
+# copied into the container's /etc/nginx/conf.d/default.conf file,
+# but using an actual musterroll running on an external blimp somewhere.
+
 server {
     listen       80;
     server_name  localhost;

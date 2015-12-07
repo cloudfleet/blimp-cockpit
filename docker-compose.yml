@@ -1,10 +1,12 @@
+# the docker-compose setup that uses grunt's development files in app/
+
 cockpit:
   image: nginx
   volumes:
     - ./app/:/usr/share/nginx/html/
     - ./bower_components/:/usr/share/nginx/html/bower_components/
     - ./.tmp/styles/:/usr/share/nginx/html/styles/
-    - ./nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./nginx-default-dev.conf:/etc/nginx/conf.d/default.conf:ro
     - ./dist/fonts:/usr/share/nginx/html/fonts
   ports:
     - "8080:80"

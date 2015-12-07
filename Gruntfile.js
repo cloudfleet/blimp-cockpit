@@ -419,10 +419,8 @@ module.exports = function (grunt) {
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       },
-      // another copy necessary because of
+      // another copy necessary for static testing from dist/ without Docker
       // https://github.com/cloudfleet/blimp-cockpit/commit/deb1f78320779fcd3ad292192ed1b9b4dcb121d2
-      // I need a way to sanely test the dist folder without any
-      // Docker dependencies
       another: {
         files: [{
           expand: true,

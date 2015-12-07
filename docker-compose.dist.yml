@@ -1,8 +1,13 @@
+# the docker-compose setup that uses grunt's built files in dist/
+# (closer to what will be running in production)
+
 cockpit:
   image: nginx
   volumes:
     - ./dist/:/usr/share/nginx/html/
-    - ./nginx-dev.conf:/etc/nginx/conf.d/default.conf:ro
+    - ./nginx-default-dev.conf:/etc/nginx/conf.d/default.conf:ro
+    #- ./nginx-default-dist.conf:/etc/nginx/conf.d/default.conf:ro
+    #- ./dist/nginx.conf:/etc/nginx/nginx.conf:ro
   ports:
     - "8080:80"
     - "443:443"

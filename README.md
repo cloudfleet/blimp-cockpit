@@ -46,10 +46,8 @@ To test the dist folder run:
     docker-compose -f docker-compose.dist.yml up
 
 And to attach it to a real Blimp backend, fill out the
-*nginx-dev.conf* file based on *nginx-dev-ownblimp.conf.example* to match your
-settings and then run:
-
-To test the dist folder run:
+*nginx-default-dev-ownblimp.conf* file based on
+*nginx-default-dev-ownblimp.conf.example* to match your settings and then run:
 
     docker-compose -f docker-compose.ownblimp.yml up
 
@@ -57,3 +55,15 @@ To test the dist folder run:
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
+
+## Deployment
+
+Once you're happy with your changes, commit them to master and run:
+
+    grunt deploy
+
+The deploy task runs all the minification inside the `dist/` folder and pushes
+the code to the
+[production](https://github.com/cloudfleet/blimp-cockpit/tree/production) branch
+from where Marina picks it up and builds a new Docker image for ARM
+that can be deployed to the [Blimp](https://github.com/cloudfleet/blimp).
