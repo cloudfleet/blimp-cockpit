@@ -385,6 +385,7 @@ module.exports = function (grunt) {
             '.htaccess',
             'Dockerfile', // production Dockerfile
             '*.{conf,types}', // production nginx configs
+            'h5bp/{,*/}*', // h5bp nginx directives
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
