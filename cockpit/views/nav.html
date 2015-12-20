@@ -1,0 +1,42 @@
+<!-- list --> <ul class="nav"> <li ui-sref-active="active"> <a ui-sref="app.cockpit"> <i class="fa fa-tachometer icon text-muted"></i> <span>Cockpit</span> </a> </li> <li ui-sref-active="active"> <a href="mailpile/{{getCurrentUser().id}}"> <b class="badge bg-danger pull-right">{{inboxCount}}</b> <i class="fa fa-envelope icon text-muted"></i> <span translate="aside.nav.EMAIL">Email</span> </a> </li> <!--
+    <li ui-sref-active="active">
+        <a ui-sref="app.calendar">
+            <i class="fa fa-calendar icon text-muted"></i>
+            <span translate="aside.nav.CALENDAR">Calendar</span>
+        </a>
+    </li>
+    <li>
+        <a href class="auto">
+      <span class="pull-right text-muted">
+        <i class="fa fa-fw fa-angle-right text"></i>
+        <i class="fa fa-fw fa-angle-down text-active"></i>
+      </span>
+            <i class="fa fa-th-large icon text-muted"></i>
+            <span>Apps</span>
+        </a>
+        <ul class="nav nav-sub dk">
+            <li class="nav-sub-header">
+                <a href>
+                    <span>Apps</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="apps.contact">
+                    <span>Contacts</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="app.todo">
+                    <span>Todo</span>
+                </a>
+            </li>
+            <li ui-sref-active="active">
+                <a ui-sref="apps.note">
+                    <span>Note</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </li>
+    --> <li class="line dk"></li> </ul> <!-- / list -->

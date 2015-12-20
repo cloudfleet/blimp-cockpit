@@ -1,0 +1,274 @@
+<div class="hbox hbox-auto-xs hbox-auto-sm" ng-controller="DashboardCtrl"> <!-- main --> <div class="col"> <!-- main header --> <div class="bg-light lter b-b wrapper-md"> <div class="row"> <div class="col-sm-6 col-xs-12"> <h1 class="m-n font-thin h3 text-black">Cockpit</h1> <small class="text-muted">Welcome to Cloud Fleet Admin</small> </div> <!-- NODATA
+                <div class="col-sm-6 text-right hidden-xs">
+
+                    <div class="inline text-left">
+                        <div class="m-b-xs"><i class="fa fa-btc"></i>
+                            30,000 <span class="text-muted">revenue</span></div>
+                        <div ng-init="data2=[ 105,102,106,107,105,104,101,99,98,109,105,100,108,110,105,110,109 ]"
+                             ui-jq="sparkline"
+                             ui-options="{{data2}}, {type:'bar', height:20, barWidth:5, barSpacing:1, barColor:'#dce5ec'}"
+                             class="sparkline inline">loading...
+                        </div>
+                    </div>
+                </div>
+                --> </div> </div> <!-- / main header --> <!-- main wrapper --> <div class="wrapper-md"> <!-- info --> <div class="row"> <!-- info unread email --> <!-- NODATA
+                <div class="col-md-6 p-l-xs p-r-xs">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b b-light">
+                            <a ui-sref="app.mail.list">
+                                <span class="badge bg-danger pull-right">14</span>
+                                <i class="fa fa-envelope fa-fw text-muted"></i>
+                                Inbox / Unread</a>
+                        </div>
+                        <div class="clearfix panel-footer b-b">
+                            <div class="input-group">
+                                <input type="text" id="filter" class="form-control input-sm btn-rounded"
+                                       placeholder="Search">
+                                <span class="input-group-btn">
+                                  <button type="submit" class="btn btn-default btn-sm btn-rounded"><i
+                                          class="fa fa-search"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <table class="table m-b-none" ui-jq="footable" data-filter="#filter" data-page-size="10">
+                                <thead>
+                                <tr>
+                                    <th data-toggle="true">
+                                        Contact
+                                    </th>
+
+                                    <th>
+                                        Subject
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Isidra</td>
+                                    <td>accusamus et iusto odio dignissimos ducimus</td>
+                                </tr>
+                                <tr>
+                                    <td>Shona</td>
+                                    <td><a href>quos dolores et quas molestias </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Granville</td>
+                                    <td>excepturi sint occaecati cupiditate non prov</td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Easer</td>
+                                    <td>qui blanditiis </td>
+                                </tr>
+                                <tr>
+                                    <td>Maple</td>
+                                    <td>praesentium voluptatum </td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Maxine</td>
+                                    <td><a href>deleniti atque corrupti </a></td>
+                                </tr>
+                                <tr>
+                                    <td>Lorraine</td>
+                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
+                                </tr>
+                                <tr>
+                                    <td>Lizzee</td>
+                                    <td>quos dolores et quas molestias</td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Judi</td>
+                                    <td>excepturi sint occaecati cupiditate non prov</td>
+                                </tr>
+                                <tr>
+                                    <td>Lauri</td>
+                                    <td>accusamus et iusto odio dignissimos ducimusr</td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Lorraine</td>
+                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
+                                </tr>
+                                <tr>
+                                    <td>Lizzee</td>
+                                    <td>occaecati cupiditate non prov</td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Judi</td>
+                                    <td>quos dolores et quas molestias</td>
+                                </tr>
+                                <tr>
+                                    <td>Lauri</td>
+                                    <td>accusamus et iusto odio dignissimos ducimus</td>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot class="hide-if-no-paging">
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <ul class="pagination"></ul>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                --> <!-- / info unread email --> <!-- info stats --> <div class="col-md-6 p-l-xs p-r-xs"> <div class="row row-sm text-center"> <!-- info CTA --> <div class="col-xs-6"> <a href="/mailpile/{{getCurrentUser().id}}/in/inbox/" class="block panel padder-v bg-cf-orange text-white item"> <div class="h1 font-thin h1 block">Inbox</div> <span class="text-xs">{{inboxCount}}</span> <span class="bottom text-right w-full"> <i class="fa fa-inbox m-r-sm m-b-sm fa-size-md"></i> </span> </a> </div> <!-- NODATA
+                        <div class="col-xs-6">
+                            <a href class="block panel padder-v bg-cf-orange text-white item">
+                                <span class="font-thin h1 block">Chat</span>
+                                <span class="text-xs">930</span>
+                                <span class="bottom text-right w-full">
+                                  <i class="fa fa-comment m-r-sm m-b-sm fa-size-md"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a ui-sref="app.calendar" class="block panel padder-v bg-cf-orange text-white item">
+                                <span class="font-thin h1 block">Calendar</span>
+                                <span class="text-xs">432</span>
+                                 <span class="bottom text-right w-full">
+                                  <i class="fa fa-calendar m-r-sm m-b-sm fa-size-md"></i>
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col-xs-6">
+                            <a class="block panel padder-v bg-cf-orange text-white item">
+                                <div class="font-thin h1">Wallet</div>
+                                <span class="text-xs">30,000</span>
+                                 <span class="bottom text-right w-full">
+                                  <i class="fa fa-bitcoin m-r-sm m-b-sm fa-size-md"></i>
+                                </span>
+                            </a>
+                        </div>
+                        --> <!-- / info CTA --> <!-- info bitcoint stats --> <!-- NODATA
+                        <div class="col-xs-12 text-left">
+                            <div class="panel panel-default">
+                                <a href class="text-muted m-t-sm m-l inline"><i class="icon-pie-chart"></i></a>
+
+                                <div class="text-center wrapper m-b-sm">
+                                    <div ui-refresh="data" ui-jq="sparkline" ui-options="
+              [75, 25],
+              {
+                type:'pie',
+                height:142,
+                sliceColors:['#e26826','#088076']
+              }
+              " class="sparkline inline"></div>
+                                </div>
+                                <ul class="list-group no-radius">
+                                    <li class="list-group-item" style="color: {{app.color.primary}}">
+                                        <span class="pull-right">30,000</span>
+                                        Available
+                                    </li>
+                                    <li class="list-group-item" style="color: {{app.color.info}}">
+                                        <span class="pull-right">10,000</span>
+                                        Pending
+                                    </li>
+                                    <li class="list-group-item font-bold">
+                                        <span class="pull-right">40,000</span>
+                                        Total
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        --> <!-- / info bitcoint stats --> </div> </div> <!-- / info stats --> </div> <!-- / info --> <!-- tasks --> <div class="row"> <!-- tasks todos--> <!-- NODATA
+                <div class="col-xs-6 p-l-xs p-r-xs b-light no-border-xs text-left">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b b-light">
+                            <a ui-sref="app.todo" class="text-muted pull-right text-lg"><i class="icon-arrow-right"></i></a>
+                            <h4 class="font-thin m-t-none m-b-none text-muted">Todos</h4>
+                        </div>
+
+
+                        <div class="wrapper-sm m-b">
+                            <div class="m-b hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <label class="i-checks i-checks-sm">
+                                    <input type="checkbox"><i></i>
+                                </label>
+                                <span>Feed cat</span>
+                            </div>
+                            <div class="m-b hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <label class="i-checks i-checks-sm">
+                                    <input type="checkbox"><i></i>
+                                </label>
+                                <span>Pick up the dog</span>
+                            </div>
+                            <div class="m-b hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <label class="i-checks i-checks-sm">
+                                    <input type="checkbox"><i></i>
+                                </label>
+                                <span>Kick-off meeting</span>
+                            </div>
+                            <div class="m-b hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <label class="i-checks i-checks-sm">
+                                    <input type="checkbox"><i></i>
+                                </label>
+                                <span>Morning running</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                --> <!-- / tasks todos--> <!-- tasks notes--> <!-- NODATA
+                <div class="col-xs-6 p-l-xs p-r-xs b-light no-border-xs text-left">
+                    <div class="panel b-a">
+                        <div class="panel-heading b-b b-light">
+                            <a ui-sref="apps.note" class="text-muted pull-right text-lg"><i
+                                    class="icon-arrow-right"></i></a>
+                            <h4 class="font-thin m-t-none m-b-none text-muted">Notes</h4>
+                        </div>
+
+
+                        <div class="wrapper-sm m-b">
+                            <div class="m-b-md hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+
+                                <a ui-sref="apps.note" class="">
+                                    <i class="icon-arrow-right text-muted pull-left text-lg"></i>
+                                    <span class="m-l-xs">Cloud Fleet Identity</span>
+                                </a>
+                            </div>
+                            <div class="m-b-md hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <a ui-sref="apps.note" class="">
+                                    <i class="icon-arrow-right text-muted pull-left text-lg"></i>
+                                    <span class="m-l-xs">Email Security in a nutshell</span>
+                                </a>
+                            </div>
+                            <div class="m-b-md hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <a ui-sref="apps.note" class="">
+                                    <i class="icon-arrow-right text-muted pull-left text-lg"></i>
+                                    <span class="m-l-xs">Minutes Cloud Fleet meeting</span>
+                                </a>
+                            </div>
+                            <div class="m-b-md hover-anchor">
+                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                                <a ui-sref="apps.note" class="">
+                                    <i class="icon-arrow-right text-muted pull-left text-lg"></i>
+                                    <span class="m-l-xs">Fitness Routine</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                --> <!-- / tasks notes--> </div> <!-- / tasks --> </div> <!-- / main wrapper --> <!-- calendar --> <!-- calendar directive--> <!-- NODATA
+        <div data-cf-Ui-Calendar title="'Whats on this week'" show-Date-Selectors="false" show-list="false" view="'agendaWeek'" show-class="false"></div>
+        --> <!-- / calendar directive--> <!-- / calendar --> </div> <!-- / main --> <!-- right col --> <!-- NODATA
+    <div class="col w-md bg-white-only b-l bg-auto no-border-xs">
+        <div data-ng-include=" 'views/aside.right.html' "></div>
+    </div>
+    --> <!-- / right col --> </div>
