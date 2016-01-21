@@ -72,7 +72,8 @@ small.signin {
 }
 
 .logo {
-    font-weight: 400;
+    font-weight: $primary-font-weight;
+    font-family: $primary-font;
     letter-spacing: -.04em;
     font-size: 22px;
     color: #E26826;
@@ -80,6 +81,8 @@ small.signin {
 
 .logo span {
     color: #F5F5EE;
+    font-weight: $secondary-font-weight;
+    font-family: $secondary-font;
 }
 
 .badge,
@@ -953,10 +956,11 @@ body {
     height: auto;
     padding: 0 20px;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: $primary-font-weight;
     line-height: 50px;
     text-align: center;
-    font-family: "Playfair Display", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    //font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $primary-font;
 }
 
 .navbar-brand:hover {
@@ -1147,6 +1151,9 @@ body {
 }
 
 @media (max-width: 767px) {
+    .logo span {
+      color: #131313;
+    }
     .app-aside {
         float: none;
     }
