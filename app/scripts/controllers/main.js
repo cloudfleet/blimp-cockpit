@@ -46,7 +46,7 @@ angular
       );
 
       $scope.countUnread = function() {
-        return ($scope.last_mails && $scope.last_mails.filter((item) => {return item.unread;}).length) || null;
+        return ($scope.last_mails && $scope.last_mails.filter(function(item){return item.unread;}).length) || null;
       }
 
       $scope.inboxCount = function() {
