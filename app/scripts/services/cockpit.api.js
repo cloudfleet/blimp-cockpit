@@ -44,24 +44,15 @@ angular.module('blimpCockpitApp')
 
               $http.get('/musterroll/api/v1/currentUser').
                 success(function(data){
-                  data = {"id":"AliceTragedy","aliases":["me"],"isAdmin":true}
                   storeCurrentUser(data);
                   deferred.resolve(data);
                 }).
                 error(function () {
-                  //deferred.reject(false);
-                  var data = {"id":"AliceTragedy","aliases":["me"],"isAdmin":true}
-                  storeCurrentUser(data);
-                  deferred.resolve(data);
-
+                  deferred.reject(false);
                 });
             }).
             error(function () {
-              //deferred.reject(false);
-              var data = {"id":"AliceTragedy","aliases":["me"],"isAdmin":true}
-              storeCurrentUser(data);
-              deferred.resolve(data);
-
+              deferred.reject(false);
             });
           return deferred.promise;
         },
@@ -88,16 +79,12 @@ angular.module('blimpCockpitApp')
           deferred.resolve(status);
           $http.get('/musterroll/api/v1/currentUser').
             success(function (data) {
-              data = {"id":"AliceTragedy","aliases":["me"],"isAdmin":true}
               storeCurrentUser(data);
               deferred.resolve(data);
             }).
             error(function (_, status) {
-              //clearCurrentUser();
-              //deferred.reject(null);
-              var data = {"id":"AliceTragedy","aliases":["me"],"isAdmin":true}
-              storeCurrentUser(data);
-              deferred.resolve(data);
+              clearCurrentUser();
+              deferred.reject(null);
             });
 
           return deferred.promise;

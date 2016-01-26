@@ -24,11 +24,6 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
-      /*mailpileApi.getInboxCount().then(function(count){
-        $scope.inboxCount = 10;// MOCKUP count;
-        $scope.$apply();
-      });
-      */
 
 
       $scope.getCurrentUser = function()
@@ -44,7 +39,7 @@ angular
         }
       );
 
-      mock.allMails().then(
+      mailpileApi.allMails().then(
         function(data) {
           $scope.last_mails = data;
         }
@@ -57,39 +52,6 @@ angular
       $scope.inboxCount = function() {
         return 0 || $scope.last_mails && $scope.last_mails.length;
       }
-
-
-      setTimeout(function () {
-        $scope.last_mails.unshift(    {
-              "id": 10,
-              "subject": "Cat Picture",
-              "from": {"name": "Christoph Witzany", "email": "christoph@cloudfleet.io"},
-              "avatar": "images/a10.jpg",
-              "to":[
-                {"name":"Laura", "email":"alicetragedy@twotrickpony.org"}
-              ],
-              "content":"Look at this cutie!",
-              "attach":[
-                {"name":"Cute Cat", "url":"images/cat.jpg"},
-                {"name":"c3.jpg", "url":"images/c3.jpg"}
-              ],
-              "date":"12:20 7/23/2014",
-              "label":"cloudfleet",
-              "fold":"important",
-              "unread": true
-            });
-        $scope.$apply();
-      }, 5000);
-
-      setTimeout(function () {
-        $scope.notifications.unshift(
-          {
-              "text": "Your mother will have birthday soon!",
-              "date": Date.now()
-
-          });
-        $scope.$apply();
-      }, 10000);
 
 
       // config

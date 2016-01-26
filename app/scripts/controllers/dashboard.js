@@ -18,7 +18,7 @@ angular.module('blimpCockpitApp')
 
       $scope.mailStyle = function(mail)
       {
-        return {'font-weight': mail.unread ? 'bold' : 'normal'};
+        return {'font-weight': mail.flags.unread ? 'bold' : 'normal'};
       };
 
       $scope.closeOpenedMail = function () {

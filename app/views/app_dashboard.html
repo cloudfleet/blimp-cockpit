@@ -66,7 +66,7 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="mail in last_mails" ng-style="mailStyle(mail)" ng-click="openMail(mail)">
-                                    <td title="{{mail.from.email}}" ng-click="openMail(mail)">{{mail.from.name | format_contact}}</td>
+                                    <td title="{{mail.from.email}}" ng-click="openMail(mail)">{{mail.from.fn | format_contact}}</td>
                                     <td>{{mail.subject}}</td>
                                 </tr>
 
@@ -87,10 +87,10 @@
                           <div class="modal-body">
                               <p>
                                   <strong>From: </strong>
-                                  {{opened_mail.from.name}} &lt;{{opened_mail.from.email}}&gt;
+                                  {{opened_mail.from.fn}} &lt;{{opened_mail.from.address}}&gt;
                               </p>
                               <p>
-                                {{opened_mail.content}}
+                                {{opened_mail.body.snippet}}
                               </p>
                               <p>
                                 <img src="{{opened_mail.attach[0].url}}" alt="{{opened_mail.attach[0].name}}" style="width: 100%">
