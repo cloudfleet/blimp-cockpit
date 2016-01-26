@@ -35,7 +35,6 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-ui-utils/ui-utils.js',
       'bower_components/angular-ui-select/dist/select.js',
-      'bower_components/jquery-ui/ui/jquery-ui.js',
       'bower_components/moment/moment.js',
       'bower_components/fullcalendar/dist/fullcalendar.js',
       'bower_components/angular-ui-calendar/src/calendar.js',
@@ -50,6 +49,7 @@ module.exports = function(config) {
       'bower_components/footable/js/footable.js',
       'bower_components/screenfull/dist/screenfull.js',
       'bower_components/bootstrap-daterangepicker/daterangepicker.js',
+      'bower_components/lodash/lodash.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
