@@ -9,10 +9,38 @@
  */
 angular.module('blimpCockpitApp')
   .controller('DashboardCtrl',
-  [ '$scope', 'mailpileApi',
-    function ($scope, mailpileApi) {
+  [ '$scope', 'mock', 'todoStorage', '$uibModal',
+    function ($scope, mock, todoStorage, $uibModal) {
       console.log('Creating cockpit scope');
-      mailpileApi.getInboxCount().then(function(count){
-        $scope.inboxCount = count;
-      });
+
+      $scope.todos = todoStorage.get();
+
+
+      $scope.mailStyle = function(mail)
+      {
+        return {'font-weight': mail.flags.unread ? 'bold' : 'normal'};
+      };
+
+      $scope.closeOpenedMail = function () {
+        $scope.modalInstance.close();
+      };
+
+      $scope.openMail = function (mail) {
+
+        $scope.opened_mail = mail;
+
+          $scope.modalInstance = $uibModal.open({
+            animation: true,
+            scope: $scope,
+            templateUrl: 'myModalContent.html',
+            controller: 'DashboardCtrl',
+            size: "lg",
+            resolve: {
+              items: function () {
+                return $scope.items;
+              }
+            }
+          });
+
+        };
     }]);

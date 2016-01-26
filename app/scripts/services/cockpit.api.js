@@ -49,12 +49,10 @@ angular.module('blimpCockpitApp')
                 }).
                 error(function () {
                   deferred.reject(false);
-
                 });
             }).
             error(function () {
               deferred.reject(false);
-
             });
           return deferred.promise;
         },

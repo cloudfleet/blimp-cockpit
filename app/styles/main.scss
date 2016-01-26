@@ -106,6 +106,6 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "../bower_components/animate.css/animate.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/simple-line-icons/css/simple-line-icons.css";
-@import "variables";
+@import "./variables.scss";
 @import "./app.scss";
 @import "./fullcalendar.theme.scss";

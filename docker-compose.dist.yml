@@ -11,6 +11,7 @@ cockpit:
     - ./dist/h5bp/:/etc/nginx/h5bp/
   ports:
     - "8080:80"
+    - "443:443"
   links:
     - musterroll
 musterroll:

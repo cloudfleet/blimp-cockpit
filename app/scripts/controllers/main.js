@@ -9,8 +9,8 @@
  */
 angular
   .module('blimpCockpitApp')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', 'mailpileApi',
-    function ($scope, $translate, $localStorage, $window, cockpitApi, mailpileApi) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'cockpitApi', 'mailpileApi', 'mock',
+    function ($scope, $translate, $localStorage, $window, cockpitApi, mailpileApi, mock) {
 
       function isSmartDevice($window) {
         // Adapted from http://www.detectmobilebrowsers.com
@@ -24,10 +24,35 @@ angular
       isIE && angular.element($window.document.body).addClass('ie');
       isSmartDevice($window) && angular.element($window.document.body).addClass('smart');
 
+
+
       $scope.getCurrentUser = function()
       {
         return cockpitApi.getCurrentUser();
       };
+
+      // MOCKUP
+
+      mock.allNotifications().then(
+        function(data) {
+          $scope.notifications = data;
+        }
+      );
+
+      mailpileApi.allMails().then(
+        function(data) {
+          $scope.last_mails = data;
+        }
+      );
+
+      $scope.countUnread = function() {
+        return ($scope.last_mails && $scope.last_mails.filter((item) => {return item.unread;}).length) || null;
+      }
+
+      $scope.inboxCount = function() {
+        return 0 || $scope.last_mails && $scope.last_mails.length;
+      }
+
 
       // config
       $scope.app = {

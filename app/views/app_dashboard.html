@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-6 col-xs-12">
                     <h1 class="m-n font-thin h3 text-black">Cockpit</h1>
-                    <small class="text-muted">Welcome to Cloud Fleet Admin</small>
+                    <small class="text-muted">Welcome to CloudFleet Admin</small>
                 </div>
                 <!-- NODATA
                 <div class="col-sm-6 text-right hidden-xs">
@@ -32,14 +32,13 @@
             <div class="row">
 
                 <!-- info unread email -->
-                <!-- NODATA
                 <div class="col-md-6 p-l-xs p-r-xs">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
                             <a ui-sref="app.mail.list">
-                                <span class="badge bg-danger pull-right">14</span>
+                                <span class="badge bg-danger pull-right">{{countUnread()}}</span>
                                 <i class="fa fa-envelope fa-fw text-muted"></i>
-                                Inbox / Unread</a>
+                                Inbox</a>
                         </div>
                         <div class="clearfix panel-footer b-b">
                             <div class="input-group">
@@ -66,67 +65,9 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>Isidra</td>
-                                    <td>accusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Shona</td>
-                                    <td><a href>quos dolores et quas molestias </a></td>
-                                </tr>
-                                <tr>
-                                    <td>Granville</td>
-                                    <td>excepturi sint occaecati cupiditate non prov</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Easer</td>
-                                    <td>qui blanditiis </td>
-                                </tr>
-                                <tr>
-                                    <td>Maple</td>
-                                    <td>praesentium voluptatum </td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Maxine</td>
-                                    <td><a href>deleniti atque corrupti </a></td>
-                                </tr>
-                                <tr>
-                                    <td>Lorraine</td>
-                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Lizzee</td>
-                                    <td>quos dolores et quas molestias</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Judi</td>
-                                    <td>excepturi sint occaecati cupiditate non prov</td>
-                                </tr>
-                                <tr>
-                                    <td>Lauri</td>
-                                    <td>accusamus et iusto odio dignissimos ducimusr</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Lorraine</td>
-                                    <td>Haccusamus et iusto odio dignissimos ducimus</td>
-                                </tr>
-                                <tr>
-                                    <td>Lizzee</td>
-                                    <td>occaecati cupiditate non prov</td>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Judi</td>
-                                    <td>quos dolores et quas molestias</td>
-                                </tr>
-                                <tr>
-                                    <td>Lauri</td>
-                                    <td>accusamus et iusto odio dignissimos ducimus</td>
-                                    </td>
+                                <tr ng-repeat="mail in last_mails" ng-style="mailStyle(mail)" ng-click="openMail(mail)">
+                                    <td title="{{mail.from.email}}" ng-click="openMail(mail)">{{mail.from.fn | format_contact}}</td>
+                                    <td>{{mail.subject}}</td>
                                 </tr>
 
                                 </tbody>
@@ -139,10 +80,30 @@
                                 </tfoot>
                             </table>
                         </div>
+                        <script type="text/ng-template" id="myModalContent.html">
+                          <div class="modal-header">
+                              <h3 class="modal-title">{{opened_mail.subject}}</h3>
+                          </div>
+                          <div class="modal-body">
+                              <p>
+                                  <strong>From: </strong>
+                                  {{opened_mail.from.fn}} &lt;{{opened_mail.from.address}}&gt;
+                              </p>
+                              <p>
+                                {{opened_mail.body.snippet}}
+                              </p>
+                              <p>
+                                <img src="{{opened_mail.attach[0].url}}" alt="{{opened_mail.attach[0].name}}" style="width: 100%">
+                              </p>
+                          </div>
+                          <div class="modal-footer">
+                              <button class="btn btn-primary" type="button" ng-click="closeOpenedMail()">Close</button>
+                          </div>
+                      </script>
+
 
                     </div>
                 </div>
-                -->
                 <!-- / info unread email -->
 
                 <!-- info stats -->
@@ -152,7 +113,7 @@
                         <div class="col-xs-6">
                             <a href="/mailpile/{{getCurrentUser().id}}/in/inbox/" class="block panel padder-v bg-cf-orange text-white item">
                                 <div class="h1 font-thin h1 block">Inbox</div>
-                                <span class="text-xs">{{inboxCount}}</span>
+                                <span class="text-xs">&nbsp;{{inboxCount()}}&nbsp;</span>
                                  <span class="bottom text-right w-full">
                                   <i class="fa fa-inbox m-r-sm m-b-sm fa-size-md"></i>
                                 </span>
@@ -168,15 +129,17 @@
                                 </span>
                             </a>
                         </div>
+                        -->
                         <div class="col-xs-6">
                             <a ui-sref="app.calendar" class="block panel padder-v bg-cf-orange text-white item">
                                 <span class="font-thin h1 block">Calendar</span>
-                                <span class="text-xs">432</span>
+                                <span class="text-xs">&nbsp;</span>
                                  <span class="bottom text-right w-full">
                                   <i class="fa fa-calendar m-r-sm m-b-sm fa-size-md"></i>
                                 </span>
                             </a>
                         </div>
+                        <!-- NODATA
                         <div class="col-xs-6">
                             <a class="block panel padder-v bg-cf-orange text-white item">
                                 <div class="font-thin h1">Wallet</div>
@@ -232,7 +195,6 @@
             <!-- tasks -->
             <div class="row">
                 <!-- tasks todos-->
-                <!-- NODATA
                 <div class="col-xs-6 p-l-xs p-r-xs b-light no-border-xs text-left">
                     <div class="panel b-a">
                         <div class="panel-heading b-b b-light">
@@ -242,38 +204,16 @@
 
 
                         <div class="wrapper-sm m-b">
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
+                            <div class="m-b hover-anchor" ng-repeat="todo in todos">
+                                <a class="text-muted "><i class="icon-close text-md m-t-xs pull-right"></i></a>
                                 <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
+                                    <input type="checkbox" ng-model="todo.completed"><i></i>
                                 </label>
-                                <span>Feed cat</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Pick up the dog</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Kick-off meeting</span>
-                            </div>
-                            <div class="m-b hover-anchor">
-                                <a class="text-muted hover-action"><i class="icon-close text-md m-t-xs pull-right"></i></a>
-                                <label class="i-checks i-checks-sm">
-                                    <input type="checkbox"><i></i>
-                                </label>
-                                <span>Morning running</span>
+                                <span>{{todo.title}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                -->
                 <!-- / tasks todos-->
                 <!-- tasks notes-->
                 <!-- NODATA

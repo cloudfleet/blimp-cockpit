@@ -33,7 +33,28 @@ angular.module('blimpCockpitApp')
 
           return deferred.promise;
 
+        },
+
+        allMails: function () {
+          var deferred = $q.defer();
+          $http.get(mailpileUrl + '/in/inbox/as.json').
+            then(function (response) {
+              if(response.data.result )
+              {
+                deferred.resolve(_.values(response.data.result.data.metadata));
+              }
+              else {
+                deferred.resolve([]);
+              }
+            },
+            function (_, status) {
+
+              deferred.resolve([]);
+            });
+
+          return deferred.promise;
         }
+
       }
       return service;
 

@@ -14,35 +14,6 @@ angular.module('blimpCockpitApp')
 
         console.log('Going to ' + toState.name);
         return true;
-        /*if(toState.data.requireLogin)
-        {
-          console.log('Login required ... checking for user');
-          if(!cockpitApi.getCurrentUser())
-          {
-            console.log('No user found ... redirecting to signin');
-            event.preventDefault();
-            $state.go('access.signin');
-          }
-          else
-          {
-            console.log('User found ... continuing to ' + toState.name);
-            return true;
-          }
-        }*/
-        /*else
-        {
-          if((toState.name === 'access.forgotpwd' || toState.name === 'access.signin') && cockpitApi.getCurrentUser())
-          {
-            console.log('Already logged in ... redirecting to cockpit');
-
-            event.preventDefault();
-            $state.go('app.cockpit');
-          }
-          else {
-            return true;
-          }
-
-        }*/
       });
 
     }])
