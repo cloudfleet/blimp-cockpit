@@ -1,4 +1,4 @@
-<!-- list --> <ul class="nav"> <li ui-sref-active="active"> <a ui-sref="app.cockpit"> <i class="fa fa-tachometer icon text-muted"></i> <span>Cockpit</span> </a> </li> <li ui-sref-active="active"> <a href="mailpile/{{getCurrentUser().id}}"> <b class="badge bg-danger pull-right">{{inboxCount}}</b> <i class="fa fa-envelope icon text-muted"></i> <span translate="aside.nav.EMAIL">Email</span> </a> </li> <!--
+<!-- list --> <ul class="nav"> <li ui-sref-active="active"> <a ui-sref="app.cockpit"> <i class="fa fa-tachometer icon text-muted"></i> <span>Cockpit</span> </a> </li> <li ui-sref-active="active"> <a href="mailpile/{{getCurrentUser().id}}"> <b class="badge bg-danger pull-right">{{countUnread()}}</b> <i class="fa fa-envelope icon text-muted"></i> <span translate="aside.nav.EMAIL">Email</span> </a> </li> <!--
     <li ui-sref-active="active">
         <a ui-sref="app.calendar">
             <i class="fa fa-calendar icon text-muted"></i>
