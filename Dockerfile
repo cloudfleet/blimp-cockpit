@@ -5,7 +5,7 @@
 # This file is copied over from app/ to dist/ automatically during grunt build
 # and is used by marina to build the blimp-cockpit image
 
-FROM nginx
+FROM library/nginx
 
 RUN mkdir -p /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
